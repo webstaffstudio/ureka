@@ -1,0 +1,116 @@
+///*
+//*
+//* Circle Progress Bars
+//* --------------------------------------------------
+//*/
+//
+//
+//.progress-circle {
+//  display: inline-block;
+//  position: relative;
+//  text-align: center;
+//  line-height: 1.2;
+//
+//  canvas {
+//    vertical-align: middle;
+//  }
+//
+//  span {
+//    position: absolute;
+//    top: 50%;
+//    left: 50%;
+//    font-weight: 100;
+//    font-size: 40px;
+//    line-height: 40px;
+//    transform: translate(-50%, -50%);
+//    color: $black;
+//
+//    &:after {
+//      content: "%";
+//    }
+//  }
+//}
+//
+.progress-circle-title {
+  font-family: $font-family-sec;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: $gray-dark;
+
+  * + & {
+    margin-top: 10px;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+    margin-top: 23px;
+  }
+}
+
+/** @section Progress Circle */
+
+
+.progress-circle {
+  display: inline-block;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.progress-circle-block {
+  position: relative;
+}
+
+.progress-circle-bg {
+  fill: transparent;
+  stroke: $gray-100;
+}
+
+.progress-circle-fg {
+  fill: transparent;
+  stroke: $primary;
+  stroke-width: 5px;
+}
+
+.progress-circle-counter {
+  position: absolute;
+  top: 50%;
+  left: 51%;
+  font-size: 36px;
+  line-height: 36px;
+  transform: translate(-50%, -50%);
+  color: $gray-500;
+  
+  &::after {
+    content: "%";
+  }
+}
+
+.progress-circle-title {
+  font-family: $font-family-sec;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: $gray-dark;
+  
+  * + & {
+    margin-top: 10px;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+    margin-top: 23px;
+  }
+}
+
+.circle-modern {
+  .progress-circle-bg {
+    stroke: $primary;
+  }
+  
+  .progress-circle-counter {
+    color: $black;
+  }
+}
