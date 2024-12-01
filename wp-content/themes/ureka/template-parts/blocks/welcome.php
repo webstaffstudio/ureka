@@ -29,7 +29,7 @@ if ($slides): ?>
                                 <div class="col-lg-10">
                                     <?php if ($title): ?>
                                     <<?= $index === 0 ? 'h1' : 'h2'; ?>
-                                    class="heading-decorated"
+                                    class="welcome__heading heading-decorated"
                                     data-caption-animate="fadeInUpSmall"
                                     data-caption-delay="100">
                                     <?= esc_html($title); ?>

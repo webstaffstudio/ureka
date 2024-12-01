@@ -1,14 +1,8 @@
-import $utils, { Utils } from './welcome-slider'
 
+import './scripts';
+
+jQuery(document).ready(function (){
+});
 document.addEventListener('DOMContentLoaded', () => {
-    const element = $utils('#myElement');
-    if (element.hasClass('active')) {
-        element.removeClass('active').addClass('inactive');
-    }
 
-    element.on('click', () => {
-        console.log('Element clicked!');
-    });
-
-    console.log(`Height: ${element.height()}px`);
 });

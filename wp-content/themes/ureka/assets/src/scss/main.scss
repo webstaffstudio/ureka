@@ -1,2 +1,9 @@
-@import "custom/style";
+@import "bootstrap/bootstrap";
+@import "fonts/fonts";
 
+
+@import "custom/style";
+@import "custom/blocks/welcome";
+
+// header, footer
+@import "base/footer";

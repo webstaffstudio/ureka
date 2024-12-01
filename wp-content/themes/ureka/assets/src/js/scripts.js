@@ -1,3 +1,7 @@
+import { Util } from './aUtil';
+import Swiper from 'swiper';
+import {Autoplay, Navigation, EffectFade} from 'swiper/modules';
+Swiper.use([Autoplay, Navigation, EffectFade]);
 "use strict";
 (function () {
     // Global variables
@@ -20,7 +24,6 @@
         $window = $(window),
         $html = $("html"),
         $body = $("body"),
-
         isDesktop = $html.hasClass("desktop"),
         isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
         windowReady = false,
@@ -28,35 +31,35 @@
         livedemo = false,
 
         plugins = {
-            bootstrapModal:          $( '.modal' ),
-            bootstrapTabs:           $( '.tabs-custom' ),
-            rdNavbar:                $( '.rd-navbar' ),
-            materialParallax:        $( '.parallax-container' ),
-            rdMailForm:              $( '.rd-mailform' ),
-            rdInputLabel:            $( '.form-label' ),
-            regula:                  $( '[data-constraints]' ),
-            captcha:                 $('.recaptcha'),
-            owl:                     $( '.owl-carousel' ),
-            preloader:               $( '.preloader' ),
-            swiper:                  $( '.swiper-slider' ),
-            search:                  $( '.rd-search' ),
-            searchResults:           $( '.rd-search-results' ),
-            lightGallery:            $( "[data-lightgallery='group']" ),
-            lightGalleryItem:        $( "[data-lightgallery='item']" ),
-            lightDynamicGalleryItem: $( "[data-lightgallery='dynamic']" ),
-            radio:                   $( "input[type='radio']"),
-            customToggle:            $( '[data-custom-toggle]'),
-            wow:                     $( '.wow' ),
-            maps:                    $( '.google-map-container' ),
-            rdAudioPlayer:           $( '.rd-audio'),
-            slick:                   $( '.slick-slider' ),
-            calendar:                $( '.rd-calendar'),
-            bookingCalendar:         $( '.booking-calendar' ),
-            copyrightYear:           $( '.copyright-year' ),
-            counter:                 document.querySelectorAll('.counter'),
-            progressLinear:          document.querySelectorAll('.progress-linear'),
-            progressCircle:          document.querySelectorAll('.progress-circle'),
-            countdown:               document.querySelectorAll('.countdown')
+            bootstrapModal: $('.modal'),
+            bootstrapTabs: $('.tabs-custom'),
+            rdNavbar: $('.rd-navbar'),
+            materialParallax: $('.parallax-container'),
+            rdMailForm: $('.rd-mailform'),
+            rdInputLabel: $('.form-label'),
+            regula: $('[data-constraints]'),
+            captcha: $('.recaptcha'),
+            owl: $('.owl-carousel'),
+            preloader: $('.preloader'),
+            swiper: $('.swiper-slider'),
+            search: $('.rd-search'),
+            searchResults: $('.rd-search-results'),
+            lightGallery: $("[data-lightgallery='group']"),
+            lightGalleryItem: $("[data-lightgallery='item']"),
+            lightDynamicGalleryItem: $("[data-lightgallery='dynamic']"),
+            radio: $("input[type='radio']"),
+            customToggle: $('[data-custom-toggle]'),
+            wow: $('.wow'),
+            maps: $('.google-map-container'),
+            rdAudioPlayer: $('.rd-audio'),
+            slick: $('.slick-slider'),
+            calendar: $('.rd-calendar'),
+            bookingCalendar: $('.booking-calendar'),
+            copyrightYear: $('.copyright-year'),
+            counter: document.querySelectorAll('.counter'),
+            progressLinear: document.querySelectorAll('.progress-linear'),
+            progressCircle: document.querySelectorAll('.progress-circle'),
+            countdown: document.querySelectorAll('.countdown')
         };
 
     /**
@@ -64,8 +67,8 @@
      * @param {object} elem - jQuery object
      * @return {boolean}
      */
-    function isScrolledIntoView ( elem ) {
-        if ( isNoviBuilder ) return true;
+    function isScrolledIntoView(elem) {
+        if (isNoviBuilder) return true;
         return elem.offset().top + elem.outerHeight() >= $window.scrollTop() && elem.offset().top <= $window.scrollTop() + $window.height();
     }
 
@@ -74,16 +77,16 @@
      * @param {object} element - jQuery object
      * @param {function} func - init function
      */
-    function lazyInit( element, func ) {
+    function lazyInit(element, func) {
         var scrollHandler = function () {
-            if ( ( !element.hasClass( 'lazy-loaded' ) && ( isScrolledIntoView( element ) ) ) ) {
-                func.call( element );
-                element.addClass( 'lazy-loaded' );
+            if ((!element.hasClass('lazy-loaded') && (isScrolledIntoView(element)))) {
+                func.call(element);
+                element.addClass('lazy-loaded');
             }
         };
 
         scrollHandler();
-        $window.on( 'scroll', scrollHandler );
+        $window.on('scroll', scrollHandler);
     }
 
     // Initialize scripts that require a loaded window
@@ -91,7 +94,8 @@
         // Page loader
         if (plugins.preloader.length) {
             setTimeout(function () {
-                plugins.preloader.addClass('loaded')}, 100
+                    plugins.preloader.addClass('loaded')
+                }, 100
             )
         }
 
@@ -101,7 +105,7 @@
                 let
                     node = plugins.counter[i],
                     counter = aCounter({
-                        node:     node,
+                        node: node,
                         duration: node.getAttribute('data-duration') || 1000
                     }),
                     scrollHandler = (function () {
@@ -133,9 +137,9 @@
                     duration = container.getAttribute('data-duration') || 1000,
                     bar = container.querySelector('.progress-linear-bar'),
                     counter = aCounter({
-                        node:     container.querySelector('.progress-linear-counter'),
+                        node: container.querySelector('.progress-linear-counter'),
                         duration: duration,
-                        onStart:  function () {
+                        onStart: function () {
                             this.custom.bar.style.width = this.params.to + '%';
                         }
                     });
@@ -143,14 +147,14 @@
                 bar.style.transitionDuration = duration / 1000 + 's';
                 counter.custom = {
                     container: container,
-                    bar:       bar,
-                    onScroll:  (function () {
+                    bar: bar,
+                    onScroll: (function () {
                         if ((Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) || isNoviBuilder) {
                             this.run();
                             this.custom.container.classList.add('animated');
                         }
                     }).bind(counter),
-                    onBlur:    (function () {
+                    onBlur: (function () {
                         this.params.to = parseInt(this.params.node.textContent, 10);
                         this.run();
                     }).bind(counter)
@@ -172,7 +176,7 @@
                 let
                     container = plugins.progressCircle[i],
                     counter = aCounter({
-                        node:     container.querySelector('.progress-circle-counter'),
+                        node: container.querySelector('.progress-circle-counter'),
                         duration: 500,
                         onUpdate: function (value) {
                             this.custom.bar.render(value * 3.6);
@@ -183,14 +187,14 @@
 
                 counter.custom = {
                     container: container,
-                    bar:       aProgressCircle({node: container.querySelector('.progress-circle-bar')}),
-                    onScroll:  (function () {
+                    bar: aProgressCircle({node: container.querySelector('.progress-circle-bar')}),
+                    onScroll: (function () {
                         if (Util.inViewport(this.custom.container) && !this.custom.container.classList.contains('animated')) {
                             this.run();
                             this.custom.container.classList.add('animated');
                         }
                     }).bind(counter),
-                    onBlur:    (function () {
+                    onBlur: (function () {
                         this.params.to = parseInt(this.params.node.textContent, 10);
                         this.run();
                     }).bind(counter)
@@ -208,26 +212,26 @@
 
 
         // Material Parallax
-        if ( plugins.materialParallax.length ) {
-            if ( !isNoviBuilder && !isIE && !isMobile) {
+        if (plugins.materialParallax.length) {
+            if (!isNoviBuilder && !isIE && !isMobile) {
                 plugins.materialParallax.parallax();
             } else {
-                for ( var i = 0; i < plugins.materialParallax.length; i++ ) {
+                for (var i = 0; i < plugins.materialParallax.length; i++) {
                     var $parallax = $(plugins.materialParallax[i]);
 
-                    $parallax.addClass( 'parallax-disabled' );
-                    $parallax.css({ "background-image": 'url('+ $parallax.data("parallax-img") +')' });
+                    $parallax.addClass('parallax-disabled');
+                    $parallax.css({"background-image": 'url(' + $parallax.data("parallax-img") + ')'});
                 }
             }
         }
     });
 
-    function parseJSON ( str ) {
+    function parseJSON(str) {
         try {
-            if ( str )  return JSON.parse( str );
+            if (str) return JSON.parse(str);
             else return {};
-        } catch ( error ) {
-            console.warn( error );
+        } catch (error) {
+            console.warn(error);
             return {};
         }
     }
@@ -254,9 +258,8 @@
          * @description  toggle swiper animations on active slides
          */
         function toggleSwiperCaptionAnimation(swiper) {
-            let prevSlide = $(swiper.$el[0]),
+            let prevSlide = $(swiper.el[0]),
                 nextSlide = $(swiper.slides[swiper.activeIndex]);
-
             prevSlide
                 .find("[data-caption-animate]")
                 .each(function () {
@@ -293,7 +296,7 @@
             for (let i = 0; i < plugins.owl.length; i++) {
                 let
                     node = plugins.owl[i],
-                    params = parseJSON( node.getAttribute( 'data-owl' ) ),
+                    params = parseJSON(node.getAttribute('data-owl')),
                     defaults = {
                         items: 1,
                         margin: 30,
@@ -313,27 +316,27 @@
                         mouseDrag: false
                     },
                     generated = {
-                        autoplay: node.getAttribute( 'data-autoplay' ) !== 'false',
-                        loop: node.getAttribute( 'data-loop' ) !== 'false',
-                        mouseDrag: node.getAttribute( 'data-mouse-drag' ) !== 'false',
+                        autoplay: node.getAttribute('data-autoplay') !== 'false',
+                        loop: node.getAttribute('data-loop') !== 'false',
+                        mouseDrag: node.getAttribute('data-mouse-drag') !== 'false',
                         responsive: {}
                     },
-                    aliases = [ '-', '-sm-', '-md-', '-lg-', '-xl-', '-xxl-' ],
-                    values =  [ 0, 576, 768, 992, 1200, 1600 ],
+                    aliases = ['-', '-sm-', '-md-', '-lg-', '-xl-', '-xxl-'],
+                    values = [0, 576, 768, 992, 1200, 1600],
                     responsive = generated.responsive;
 
-                for ( let j = 0; j < values.length; j++ ) {
-                    responsive[ values[ j ] ] = {};
+                for (let j = 0; j < values.length; j++) {
+                    responsive[values[j]] = {};
 
-                    for ( let k = j; k >= -1; k-- ) {
-                        if ( !responsive[ values[ j ] ][ 'items' ] && node.getAttribute( 'data' + aliases[ k ] + 'items' ) ) {
-                            responsive[ values[ j ] ][ 'items' ] = k < 0 ? 1 : parseInt( node.getAttribute( 'data' + aliases[ k ] + 'items' ), 10 );
+                    for (let k = j; k >= -1; k--) {
+                        if (!responsive[values[j]]['items'] && node.getAttribute('data' + aliases[k] + 'items')) {
+                            responsive[values[j]]['items'] = k < 0 ? 1 : parseInt(node.getAttribute('data' + aliases[k] + 'items'), 10);
                         }
-                        if ( !responsive[ values[ j ] ][ 'stagePadding' ] && responsive[ values[ j ] ][ 'stagePadding' ] !== 0 && node.getAttribute( 'data' + aliases[ k ] + 'stage-padding' ) ) {
-                            responsive[ values[ j ] ][ 'stagePadding' ] = k < 0 ? 0 : parseInt( node.getAttribute( 'data' + aliases[ k ] + 'stage-padding' ), 10 );
+                        if (!responsive[values[j]]['stagePadding'] && responsive[values[j]]['stagePadding'] !== 0 && node.getAttribute('data' + aliases[k] + 'stage-padding')) {
+                            responsive[values[j]]['stagePadding'] = k < 0 ? 0 : parseInt(node.getAttribute('data' + aliases[k] + 'stage-padding'), 10);
                         }
-                        if ( !responsive[ values[ j ] ][ 'margin' ] && responsive[ values[ j ] ][ 'margin' ] !== 0 && node.getAttribute( 'data' + aliases[ k ] + 'margin' ) ) {
-                            responsive[ values[ j ] ][ 'margin' ] = k < 0 ? 30 : parseInt( node.getAttribute( 'data' + aliases[ k ] + 'margin' ), 10 );
+                        if (!responsive[values[j]]['margin'] && responsive[values[j]]['margin'] !== 0 && node.getAttribute('data' + aliases[k] + 'margin')) {
+                            responsive[values[j]]['margin'] = k < 0 ? 30 : parseInt(node.getAttribute('data' + aliases[k] + 'margin'), 10);
                         }
                     }
                 }
@@ -343,8 +346,8 @@
                     initLightGalleryItem($(node).find('[data-lightgallery="item"]'), 'lightGallery-in-carousel');
                 });
 
-                node.owl = $( node );
-                $( node ).owlCarousel( Util.merge( isNoviBuilder ? [ defaults, params, generated, xMode ] : [ defaults, params, generated ] ) );
+                node.owl = $(node);
+                $(node).owlCarousel(Util.merge(isNoviBuilder ? [defaults, params, generated, xMode] : [defaults, params, generated]));
             }
         }
 
@@ -384,9 +387,9 @@
         function attachFormValidator(elements) {
             // Custom validator - phone number
             regula.custom({
-                name:           'PhoneNumber',
+                name: 'PhoneNumber',
                 defaultMessage: 'Invalid phone number format',
-                validator:      function () {
+                validator: function () {
                     if (this.value === '') return true;
                     else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
                 }
@@ -416,19 +419,19 @@
 
             let regularConstraintsMessages = [
                 {
-                    type:       regula.Constraint.Required,
+                    type: regula.Constraint.Required,
                     newMessage: "The text field is required."
                 },
                 {
-                    type:       regula.Constraint.Email,
+                    type: regula.Constraint.Email,
                     newMessage: "The email is not a valid email."
                 },
                 {
-                    type:       regula.Constraint.Numeric,
+                    type: regula.Constraint.Numeric,
                     newMessage: "Only numbers are required"
                 },
                 {
-                    type:       regula.Constraint.Selected,
+                    type: regula.Constraint.Selected,
                     newMessage: "Please choose an option."
                 }
             ];
@@ -551,9 +554,9 @@
                 grecaptcha.render(
                     $captcha.attr('id'),
                     {
-                        sitekey:  $captcha.attr('data-sitekey'),
-                        size:     $captcha.attr('data-size') ? $captcha.attr('data-size') : 'normal',
-                        theme:    $captcha.attr('data-theme') ? $captcha.attr('data-theme') : 'light',
+                        sitekey: $captcha.attr('data-sitekey'),
+                        size: $captcha.attr('data-size') ? $captcha.attr('data-size') : 'normal',
+                        theme: $captcha.attr('data-theme') ? $captcha.attr('data-theme') : 'light',
                         callback: function () {
                             $('.recaptcha').trigger('propertychange');
                         }
@@ -574,17 +577,17 @@
          * @param {object} itemsToInit - jQuery object
          * @param {string} [addClass] - additional gallery class
          */
-        function initLightGallery ( itemsToInit, addClass ) {
-            if ( !isNoviBuilder ) {
-                $( itemsToInit ).lightGallery( {
-                    thumbnail: $( itemsToInit ).attr( "data-lg-thumbnail" ) !== "false",
+        function initLightGallery(itemsToInit, addClass) {
+            if (!isNoviBuilder) {
+                $(itemsToInit).lightGallery({
+                    thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
                     selector: "[data-lightgallery='item']",
-                    autoplay: $( itemsToInit ).attr( "data-lg-autoplay" ) === "true",
-                    pause: parseInt( $( itemsToInit ).attr( "data-lg-autoplay-delay" ) ) || 5000,
+                    autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
+                    pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
                     addClass: addClass,
-                    mode: $( itemsToInit ).attr( "data-lg-animation" ) || "lg-slide",
-                    loop: $( itemsToInit ).attr( "data-lg-loop" ) !== "false"
-                } );
+                    mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
+                    loop: $(itemsToInit).attr("data-lg-loop") !== "false"
+                });
             }
         }
 
@@ -593,21 +596,21 @@
          * @param {object} itemsToInit - jQuery object
          * @param {string} [addClass] - additional gallery class
          */
-        function initDynamicLightGallery ( itemsToInit, addClass ) {
-            if ( !isNoviBuilder ) {
-                $( itemsToInit ).on( "click", function () {
-                    $( itemsToInit ).lightGallery( {
-                        thumbnail: $( itemsToInit ).attr( "data-lg-thumbnail" ) !== "false",
+        function initDynamicLightGallery(itemsToInit, addClass) {
+            if (!isNoviBuilder) {
+                $(itemsToInit).on("click", function () {
+                    $(itemsToInit).lightGallery({
+                        thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
                         selector: "[data-lightgallery='item']",
-                        autoplay: $( itemsToInit ).attr( "data-lg-autoplay" ) === "true",
-                        pause: parseInt( $( itemsToInit ).attr( "data-lg-autoplay-delay" ) ) || 5000,
+                        autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
+                        pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
                         addClass: addClass,
-                        mode: $( itemsToInit ).attr( "data-lg-animation" ) || "lg-slide",
-                        loop: $( itemsToInit ).attr( "data-lg-loop" ) !== "false",
+                        mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
+                        loop: $(itemsToInit).attr("data-lg-loop") !== "false",
                         dynamic: true,
-                        dynamicEl: JSON.parse( $( itemsToInit ).attr( "data-lg-dynamic-elements" ) ) || []
-                    } );
-                } );
+                        dynamicEl: JSON.parse($(itemsToInit).attr("data-lg-dynamic-elements")) || []
+                    });
+                });
             }
         }
 
@@ -616,9 +619,9 @@
          * @param {object} itemToInit - jQuery object
          * @param {string} [addClass] - additional gallery class
          */
-        function initLightGalleryItem ( itemToInit, addClass ) {
-            if ( !isNoviBuilder ) {
-                $( itemToInit ).lightGallery( {
+        function initLightGalleryItem(itemToInit, addClass) {
+            if (!isNoviBuilder) {
+                $(itemToInit).lightGallery({
                     selector: "this",
                     addClass: addClass,
                     counter: false,
@@ -632,7 +635,7 @@
                         byline: 0,
                         portrait: 0
                     }
-                } );
+                });
             }
         }
 
@@ -668,14 +671,14 @@
         function initMaps() {
             var key;
 
-            for ( var i = 0; i < plugins.maps.length; i++ ) {
-                if ( plugins.maps[i].hasAttribute( "data-key" ) ) {
-                    key = plugins.maps[i].getAttribute( "data-key" );
+            for (var i = 0; i < plugins.maps.length; i++) {
+                if (plugins.maps[i].hasAttribute("data-key")) {
+                    key = plugins.maps[i].getAttribute("data-key");
                     break;
                 }
             }
 
-            $.getScript('//maps.google.com/maps/api/js?'+ ( key ? 'key='+ key + '&' : '' ) +'sensor=false&libraries=geometry,places&v=quarterly', function () {
+            $.getScript('//maps.google.com/maps/api/js?' + (key ? 'key=' + key + '&' : '') + 'sensor=false&libraries=geometry,places&v=quarterly', function () {
                 var geocoder = new google.maps.Geocoder;
                 for (var i = 0; i < plugins.maps.length; i++) {
                     var zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 10) || 11;
@@ -704,11 +707,11 @@
                     // Add markers from google-map-markers array
                     var markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
 
-                    if (markerItems.length){
+                    if (markerItems.length) {
                         var markers = [];
-                        for (var j = 0; j < markerItems.length; j++){
+                        for (var j = 0; j < markerItems.length; j++) {
                             var markerElement = markerItems[j];
-                            getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function(location, markerElement, mapElement){
+                            getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function (location, markerElement, mapElement) {
                                 var icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
                                 var activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
                                 var info = markerElement.getAttribute("data-description") || "";
@@ -720,7 +723,7 @@
                                     position: location,
                                     map: mapElement.map
                                 }
-                                if (icon){
+                                if (icon) {
                                     markerData.icon = icon;
                                 }
                                 var marker = new google.maps.Marker(markerData);
@@ -728,7 +731,7 @@
                                 markers.push({markerElement: markerElement, infoWindow: infoWindow});
                                 marker.isActive = false;
                                 // Handle infoWindow close click
-                                google.maps.event.addListener(infoWindow,'closeclick',(function(markerElement, mapElement){
+                                google.maps.event.addListener(infoWindow, 'closeclick', (function (markerElement, mapElement) {
                                     var markerIcon = null;
                                     markerElement.gmarker.isActive = false;
                                     markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
@@ -737,16 +740,16 @@
 
 
                                 // Set marker active on Click and open infoWindow
-                                google.maps.event.addListener(marker, 'click', (function(markerElement, mapElement) {
+                                google.maps.event.addListener(marker, 'click', (function (markerElement, mapElement) {
                                     if (markerElement.infoWindow.getContent().length === 0) return;
                                     var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
-                                    for (var k =0; k < markers.length; k++){
+                                    for (var k = 0; k < markers.length; k++) {
                                         var markerIcon;
-                                        if (markers[k].markerElement === markerElement){
+                                        if (markers[k].markerElement === markerElement) {
                                             currentInfoWindow = markers[k].infoWindow;
                                         }
                                         gMarker = markers[k].markerElement.gmarker;
-                                        if (gMarker.isActive && markers[k].markerElement !== markerElement){
+                                        if (gMarker.isActive && markers[k].markerElement !== markerElement) {
                                             gMarker.isActive = false;
                                             markerIcon = markers[k].markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")
                                             gMarker.setIcon(markerIcon);
@@ -756,13 +759,13 @@
 
                                     currentMarker.isActive = !currentMarker.isActive;
                                     if (currentMarker.isActive) {
-                                        if (markerIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active")){
+                                        if (markerIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active")) {
                                             currentMarker.setIcon(markerIcon);
                                         }
 
                                         currentInfoWindow.open(map, marker);
-                                    }else{
-                                        if (markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")){
+                                    } else {
+                                        if (markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon")) {
                                             currentMarker.setIcon(markerIcon);
                                         }
                                         currentInfoWindow.close();
@@ -830,15 +833,15 @@
                     }, bootstrapTab));
                 }
 
-                plugins.bootstrapTabs[i].querySelectorAll( '.nav li a' ).forEach( function( tab, index ) {
-                    if ( index === 0 ) {
-                        tab.parentElement.classList.remove( 'active' );
-                        $( tab ).tab( 'show' );
+                plugins.bootstrapTabs[i].querySelectorAll('.nav li a').forEach(function (tab, index) {
+                    if (index === 0) {
+                        tab.parentElement.classList.remove('active');
+                        $(tab).tab('show');
                     }
 
-                    tab.addEventListener( 'click', function( event ) {
+                    tab.addEventListener('click', function (event) {
                         event.preventDefault();
-                        $( this ).tab( 'show' );
+                        $(this).tab('show');
                     });
                 });
             }
@@ -850,8 +853,8 @@
         }
 
         // Google maps
-        if( plugins.maps.length ) {
-            lazyInit( plugins.maps, initMaps );
+        if (plugins.maps.length) {
+            lazyInit(plugins.maps, initMaps);
         }
 
         // Add custom styling options for input[type="radio"]
@@ -870,22 +873,22 @@
         }
 
         // RD Navbar
-        if ( plugins.rdNavbar.length ) {
+        if (plugins.rdNavbar.length) {
             var
                 navbar = plugins.rdNavbar,
-                aliases = { '-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600 },
+                aliases = {'-': 0, '-sm-': 576, '-md-': 768, '-lg-': 992, '-xl-': 1200, '-xxl-': 1600},
                 responsive = {};
 
-            for ( var alias in aliases ) {
-                var link = responsive[ aliases[ alias ] ] = {};
-                if ( navbar.attr( 'data'+ alias +'layout' ) )          link.layout        = navbar.attr( 'data'+ alias +'layout' );
-                if ( navbar.attr( 'data'+ alias +'device-layout' ) )   link.deviceLayout  = navbar.attr( 'data'+ alias +'device-layout' );
-                if ( navbar.attr( 'data'+ alias +'hover-on' ) )        link.focusOnHover  = navbar.attr( 'data'+ alias +'hover-on' ) === 'true';
-                if ( navbar.attr( 'data'+ alias +'auto-height' ) )     link.autoHeight    = navbar.attr( 'data'+ alias +'auto-height' ) === 'true';
-                if ( navbar.attr( 'data'+ alias +'stick-up-offset' ) ) link.stickUpOffset = navbar.attr( 'data'+ alias +'stick-up-offset' );
-                if ( navbar.attr( 'data'+ alias +'stick-up' ) )        link.stickUp       = navbar.attr( 'data'+ alias +'stick-up' ) === 'true';
-                if ( isNoviBuilder ) link.stickUp = false;
-                else if ( navbar.attr( 'data'+ alias +'stick-up' ) )   link.stickUp       = navbar.attr( 'data'+ alias +'stick-up' ) === 'true';
+            for (var alias in aliases) {
+                var link = responsive[aliases[alias]] = {};
+                if (navbar.attr('data' + alias + 'layout')) link.layout = navbar.attr('data' + alias + 'layout');
+                if (navbar.attr('data' + alias + 'device-layout')) link.deviceLayout = navbar.attr('data' + alias + 'device-layout');
+                if (navbar.attr('data' + alias + 'hover-on')) link.focusOnHover = navbar.attr('data' + alias + 'hover-on') === 'true';
+                if (navbar.attr('data' + alias + 'auto-height')) link.autoHeight = navbar.attr('data' + alias + 'auto-height') === 'true';
+                if (navbar.attr('data' + alias + 'stick-up-offset')) link.stickUpOffset = navbar.attr('data' + alias + 'stick-up-offset');
+                if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
+                if (isNoviBuilder) link.stickUp = false;
+                else if (navbar.attr('data' + alias + 'stick-up')) link.stickUp = navbar.attr('data' + alias + 'stick-up') === 'true';
             }
 
             plugins.rdNavbar.RDNavbar({
@@ -1019,23 +1022,23 @@
                     node = plugins.swiper[i],
                     params = parseJSON(node.getAttribute('data-swiper')),
                     defaults = {
-                        speed:      1000,
-                        loop:       true,
+                        speed: 1000,
+                        loop: true,
                         pagination: {
-                            el:        '.swiper-pagination',
+                            el: '.swiper-pagination',
                             clickable: true
                         },
                         navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev'
                         },
-                        autoplay:   {
+                        autoplay: {
                             delay: 5000
                         }
                     },
                     xMode = {
-                        autoplay:      false,
-                        loop:          false,
+                        autoplay: false,
+                        loop: false,
                         simulateTouch: false
                     };
 
@@ -1051,15 +1054,15 @@
                     }
                 };
 
-                new Swiper( node, Util.merge( isNoviBuilder ? [ defaults, params, xMode ] : [ defaults, params ] ) );
+                new Swiper(node, Util.merge(isNoviBuilder ? [defaults, params, xMode] : [defaults, params]));
             }
         }
 
         // Owl carousel
-        if ( plugins.owl.length ) {
-            for ( var i = 0; i < plugins.owl.length; i++ ) {
-                var carousel = $( plugins.owl[ i ] );
-                plugins.owl[ i ].owl = carousel;
+        if (plugins.owl.length) {
+            for (var i = 0; i < plugins.owl.length; i++) {
+                var carousel = $(plugins.owl[i]);
+                plugins.owl[i].owl = carousel;
             }
         }
 
@@ -1123,9 +1126,9 @@
                     formHasCaptcha = false;
 
                 $form.attr('novalidate', 'novalidate').ajaxForm({
-                    data:         {
+                    data: {
                         "form-type": $form.attr("data-form-type") || "contact",
-                        "counter":   i
+                        "counter": i
                     },
                     beforeSubmit: function (arr, $form, options) {
                         if (isNoviBuilder)
@@ -1153,9 +1156,9 @@
 
                                 $.ajax({
                                     method: "POST",
-                                    url:    "bat/reCaptcha.php",
-                                    data:   {'g-recaptcha-response': captchaToken},
-                                    async:  false
+                                    url: "bat/reCaptcha.php",
+                                    data: {'g-recaptcha-response': captchaToken},
+                                    async: false
                                 })
                                     .done(function (responceCode) {
                                         if (responceCode !== 'CPT000') {
@@ -1190,7 +1193,7 @@
                             return false;
                         }
                     },
-                    error:        function (result) {
+                    error: function (result) {
                         if (isNoviBuilder)
                             return;
 
@@ -1205,7 +1208,7 @@
                             window.dispatchEvent(new Event('resize'));
                         }
                     },
-                    success:      function (result) {
+                    success: function (result) {
                         if (isNoviBuilder)
                             return;
 
@@ -1337,7 +1340,7 @@
                     slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll'), 10) || 1,
                     asNavFor: $slickItem.attr('data-for') || false,
                     dots: $slickItem.attr("data-dots") === "true",
-                    infinite:  isNoviBuilder ? false : $slickItem.attr("data-loop") === "true",
+                    infinite: isNoviBuilder ? false : $slickItem.attr("data-loop") === "true",
                     focusOnSelect: true,
                     arrows: $slickItem.attr("data-arrows") === "true",
                     swipe: $slickItem.attr("data-swipe") === "true",
@@ -1562,11 +1565,11 @@
                 let
                     node = plugins.countdown[i],
                     countdown = aCountdown({
-                        node:  node,
-                        from:  node.getAttribute('data-from'),
-                        to:    node.getAttribute('data-to'),
+                        node: node,
+                        from: node.getAttribute('data-from'),
+                        to: node.getAttribute('data-to'),
                         count: node.getAttribute('data-count'),
-                        tick:  100,
+                        tick: 100,
                     });
             }
         }

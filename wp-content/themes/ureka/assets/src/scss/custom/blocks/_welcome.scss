@@ -1,0 +1,17 @@
+.welcome {
+  &__heading {
+    @extend h1;
+  }
+  .swiper-slide {
+    position: relative;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: rgba(3, 3, 14, 0.5);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}

@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "bootstrap": "5.3.3",
-    "jquery": "^3.7.1"
+    "jquery": "^3.7.1",
+    "swiper": "^11.1.15"
   }
 }
