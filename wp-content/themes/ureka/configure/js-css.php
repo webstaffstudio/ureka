@@ -10,6 +10,7 @@ function _add_javascript()
     // Deregister jQuery
     wp_deregister_script('jquery');
     wp_enqueue_script('cdn-jquery', 'https://code.jquery.com/jquery-3.7.1.min.js', array(), null, true);
+    wp_enqueue_script('core', get_template_directory_uri() . '/assets/src/js/core/core.min.js', null, null, true);
     wp_enqueue_script('theme', get_template_directory_uri() . '/assets/dist/js/main.js', null, null, true);
 }
 

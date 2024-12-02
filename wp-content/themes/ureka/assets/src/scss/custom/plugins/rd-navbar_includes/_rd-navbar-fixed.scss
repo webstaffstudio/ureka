@@ -19,10 +19,16 @@
     white-space: nowrap;
     overflow: hidden;
     z-index: 17;
+    @include mq(0, 1199) {
+      left: 66px;
+    }
 
     img {
       height: 24px;
       width: auto;
+      @include mq(0, 1199) {
+        height: 35px;
+      }
     }
   }
 
@@ -109,6 +115,7 @@
 
     li {
       text-align: left;
+
       > a {
         display: block;
         padding: $rd-navbar-fixed-panel-item-padding-vertical 56px $rd-navbar-fixed-panel-item-padding-vertical 18px;
@@ -200,6 +207,7 @@
     * + .rd-megamenu-list {
       margin-top: 14px;
     }
+
     * + .rd-megamenu-header {
       margin-top: 25px;
     }
@@ -212,6 +220,7 @@
   // RD Navbar Nav
   .rd-navbar-nav {
     font-family: $font-family-sec;
+
     li {
       .rd-navbar-dropdown,
       .rd-navbar-megamenu {
@@ -236,6 +245,7 @@
           opacity: 1;
           height: auto;
         }
+
         > .rd-navbar-submenu-toggle {
           &::after {
             transform: rotate(180deg);
@@ -249,6 +259,7 @@
   // RD Navbar toggle
   .rd-navbar-submenu-toggle {
     cursor: pointer;
+
     &::after {
       content: '\f107';
       position: absolute;
@@ -290,7 +301,9 @@
     top: -$rd-navbar-min-height;
     pointer-events: none;
 
-    * { pointer-events: auto; }
+    * {
+      pointer-events: auto;
+    }
   }
 
   .rd-navbar-top-panel__main.active .rd-navbar-top-panel__content {
@@ -349,7 +362,7 @@
         margin-top: 10px;
       }
     }
-    
+
     .list-semicolon {
       > li {
         color: $white;
@@ -370,7 +383,9 @@
         display: table;
       }
 
-      > li { display: block; }
+      > li {
+        display: block;
+      }
 
       > li:nth-last-child(n + 2) {
         &::before {
@@ -379,8 +394,13 @@
       }
 
       .unit {
-        .unit-left { display: none; }
-        .unit-body { padding-left: 0; }
+        .unit-left {
+          display: none;
+        }
+
+        .unit-body {
+          padding-left: 0;
+        }
       }
 
       dl {
@@ -421,6 +441,7 @@
 
   .rd-navbar-search_toggled {
     position: static;
+
     .form-input {
       padding-right: 40px;
     }
@@ -447,6 +468,7 @@
 
     .rd-navbar-search__toggle {
       top: -1px;
+
       &::before,
       &::after {
         transform-origin: 50% 50%;

@@ -17,7 +17,7 @@
     transition: .33s all ease;
 
     > * + * { margin-top: 30px; }
-    
+
     .rd-navbar-toggle {
       display: none;
     }
@@ -41,8 +41,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include mq(0, 1199) {
+      justify-content: center;
+    }
+
   }
-  
+
   .rd-navbar-panel,
   .rd-navbar-nav-wrap__element {
     flex-shrink: 0;
@@ -52,13 +56,13 @@
   .rd-navbar-nav-wrap {
     flex-direction: row-reverse;
     flex-grow: 1;
-    
+
     > * {
       &:first-child { padding-right: 0; }
       &:last-child { padding-left: 0; }
     }
   }
-  
+
   // RD Navbar Top Panel
   .rd-navbar-top-panel {
     border-bottom: 1px solid rgba($white, .1);
@@ -113,9 +117,9 @@
       margin-left: auto;
       margin-right: auto;
     }
-    
+
     .rd-navbar-megamenu {
-      
+
       @include media-breakpoint-up(xxl) {
         left: 50%;
         max-width: $rd-navbar-width;
@@ -123,27 +127,27 @@
       }
     }
   }
-  
+
   &.rd-navbar_transparent {
     background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 1%,rgba(0,0,0,0) 100%);
     box-shadow: none;
-    
+
     .rd-navbar-top-panel {
       border-bottom: 0;
     }
-    
+
     .rd-navbar-search .rd-search {
       background-color: transparent;
     }
   }
-  
+
   // Media
   @include media-breakpoint-down(xl) {
     .rd-navbar-nav-wrap {
       position: relative;
       width: 100%;
       transition: padding .33s;
-      
+
       > .rd-navbar-nav {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -233,7 +237,7 @@
         margin-right: 21%;
       }
     }
-    
+
     &.rd-navbar_boxed {
       .rd-navbar__element {
         min-width: 50px;
@@ -288,7 +292,7 @@
 
       .rd-navbar-panel { display: none; }
     }
-    
+
     @include media-breakpoint-up(xl) {
       .rd-navbar-nav > li > .rd-navbar-dropdown,
       .rd-navbar-nav > li .rd-navbar-megamenu {

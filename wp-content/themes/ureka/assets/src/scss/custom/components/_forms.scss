@@ -1,5 +1,94 @@
 .hbspt-form {
   form {
-    background-color: red;
+    margin: 0 -5px;
+    .hs-error-msg {
+      color: #ff3737;
+    }
+
+    .submitted-message {
+      color: #1bb900;
+      font-size: 18px;
+      @include mq(0, 767) {
+        font-size: 16px;
+      }
+    }
+
+    label {
+      display: block;
+    }
+
+    .hs_error_rollup {
+      display: block;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hs_submit {
+      padding: 0 5px;
+    }
+
+    .input {
+      margin-bottom: 10px;
+
+      input, textarea {
+        height: 50px;
+        display: block;
+        width: 100%;
+        padding: 5px 19px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27px;
+        font-style: italic;
+        color: #000;
+        background-color: #ccc;
+        background-image: none;
+        border-radius: 3px;
+        transition: .3s ease-in-out;
+        border: 1px solid #f8f8f8;
+
+        &:focus {
+          color: #fff;
+          background-color: transparent;
+          @include placeholder() {
+            opacity: 0;
+          }
+        }
+
+        @include placeholder() {
+          color: #000;
+        }
+      }
+
+      textarea {
+        resize: none;
+        height: 120px;
+        width: 100%;
+      }
+    }
+
+    input[type="submit"] {
+      color: #fff;
+      background-color: #f9b707;
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+      border: none;
+      border-radius: 3px;
+      padding: 12px 30px;
+      font-size: 14px;
+      line-height: 24px;
+      font-family: $font-family-sans-serif-1;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      transition: 0.33s all ease;
+      white-space: normal;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+
+      &:hover {
+        background-color: #000;
+      }
+    }
   }
 }

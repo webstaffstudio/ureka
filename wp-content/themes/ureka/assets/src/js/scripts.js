@@ -1,4 +1,4 @@
-import { Util } from './aUtil';
+
 import Swiper from 'swiper';
 import {Autoplay, Navigation, EffectFade} from 'swiper/modules';
 Swiper.use([Autoplay, Navigation, EffectFade]);
