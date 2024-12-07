@@ -13,6 +13,11 @@
 @import "mixins";
 @import "reset";
 
+
+.wp-block-group {
+  @extend .container;
+}
+
 //
 // Main Styles
 //
@@ -31,10 +36,12 @@ body {
     font-size: $font-size-body;
   }
 }
+
 // Font Awesome
 i {
   font-style: normal;
 }
+
 // Links
 a {
   display: inline-block;
@@ -350,6 +357,42 @@ code,
   //min-height: 100vh !important;
 }
 
+.page-welcome {
+  position: relative;
+
+  h1 {
+    @extend h2;
+  }
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(3, 3, 14, 0.7);
+    z-index: 1;
+  }
+
+  &__nav {
+    margin-top: 45px;
+
+    a {
+      color: #fff;
+
+      &:hover {
+        color: $primary;
+      }
+
+    }
+
+    span.sep {
+      margin: 0 5px 0 2px;
+    }
+  }
+}
+
 // Page header
 .page-header {
   position: relative;
@@ -380,10 +423,12 @@ code,
       z-index: 1;
       right: 0;
     }
+
     &:last-of-type {
       left: 0;
     }
   }
+
   img {
     width: auto;
   }

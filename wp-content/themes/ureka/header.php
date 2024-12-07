@@ -13,6 +13,7 @@
 
     <header id="masthead" class="site-header">
         <div class="rd-navbar-wrap">
+            <?php if (has_nav_menu('menu-header')): ?>
             <nav class="rd-navbar rd-navbar_transparent rd-navbar_boxed" data-layout="rd-navbar-fixed"
                  data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed"
                  data-lg-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static"
@@ -48,6 +49,7 @@
                     </div>
                 </div>
             </nav>
+            <?php endif; ?>
         </div>
     </header><!-- #masthead -->
 

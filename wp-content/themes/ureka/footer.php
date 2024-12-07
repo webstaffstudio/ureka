@@ -6,6 +6,7 @@ $footer_contacts_title = get_field('footer_contacts_title', 'option');
 $contacts_address = get_field('contacts_address', 'option');
 $contacts_phone = get_field('contacts_phone', 'option');
 $contacts_email = get_field('contacts_email', 'option');
+$contacts_linkedin = get_field('contacts_linkedin', 'option');
 ?>
 
 <footer id="colophon" class="footer pre-footer-corporate bg-gray-dark">
@@ -52,6 +53,12 @@ $contacts_email = get_field('contacts_email', 'option');
                                 <li>
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     <a href="mailto:<?= $contacts_email ?>"><?= $contacts_email ?></a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if ($contacts_linkedin): ?>
+                                <li>
+                                    <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                                    <a href="<?= $contacts_linkedin;?>" target="_blank">LinkedIn</a>
                                 </li>
                             <?php endif; ?>
                         </ul>

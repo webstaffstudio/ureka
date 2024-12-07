@@ -101,3 +101,12 @@ add_action('upload_mimes', 'add_file_types_to_uploads', 1, 1);
 //disable update emails
 add_filter( 'auto_plugin_update_send_email', '__return_false' );
 add_filter( 'auto_theme_update_send_email', '__return_false' );
+
+
+// breadcrumbs navXT home page title
+add_filter('bcn_breadcrumb_title', function($title, $breadcrumb) {
+    if (isset($breadcrumb[0]) && $breadcrumb[0] == 'home') {
+        $title = get_the_title(get_option('page_on_front'));
+    }
+    return $title;
+}, 10, 2);

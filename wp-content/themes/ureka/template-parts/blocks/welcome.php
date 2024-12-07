@@ -29,21 +29,17 @@ if ($slides): ?>
                                 <div class="col-lg-10">
                                     <?php if ($title): ?>
                                     <<?= $index === 0 ? 'h1' : 'h2'; ?>
-                                    class="welcome__heading heading-decorated"
-                                    data-caption-animate="fadeInUpSmall"
-                                    data-caption-delay="100">
+                                    class="welcome__heading heading-decorated">
                                     <?= esc_html($title); ?>
                                 </<?= $index === 0 ? 'h1' : 'h2'; ?>>
                                 <?php endif; ?>
                                 <?php if ($text): ?>
-                                    <h4 data-caption-animate="fadeInUpSmall" data-caption-delay="300">
+                                    <h4>
                                         <?= esc_html($text); ?>
                                     </h4>
                                 <?php endif; ?>
                                 <?php if ($welcome_link): ?>
                                     <a class="button button-primary"
-                                       data-caption-animate="fadeInUpSmall"
-                                       data-caption-delay="350"
                                        href="<?= esc_url($welcome_link['url']); ?>">
                                         <?= esc_html($welcome_link['title']); ?>
                                     </a>
