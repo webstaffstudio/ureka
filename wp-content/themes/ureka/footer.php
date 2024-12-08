@@ -1,14 +1,34 @@
 </div><!-- #content -->
 <?php
-$form_title = get_field('footer_form_title', 'options');
-$form_id = get_field('footer_form_id', 'options');
-$footer_contacts_title = get_field('footer_contacts_title', 'option');
-$contacts_address = get_field('contacts_address', 'option');
-$contacts_phone = get_field('contacts_phone', 'option');
-$contacts_email = get_field('contacts_email', 'option');
-$contacts_linkedin = get_field('contacts_linkedin', 'option');
-?>
+$fields = get_fields('options');
 
+$form_title = $fields['footer_form_title'] ?? '';
+$form_id = $fields['footer_form_id'] ?? '';
+$footer_contacts_title = $fields['footer_contacts_title'] ?? '';
+$contacts_address = $fields['contacts_address'] ?? '';
+$contacts_phone = $fields['contacts_phone'] ?? '';
+$contacts_email = $fields['contacts_email'] ?? '';
+$contacts_linkedin = $fields['contacts_linkedin'] ?? '';
+$cta_title = $fields['cta_title'] ?? '';
+$cta_text = $fields['cta_text'] ?? '';
+$cta_button = $fields['cta_button'] ?? '';
+$page_disable_cta = get_field('call_to_action_disable', get_queried_object_id());
+?>
+<?php
+if (!$page_disable_cta):
+    if ($cta_title || $cta_text || $cta_button):
+        ?>
+        <section class="cta">
+            <div class="container">
+                <div class="cta__wrapper">
+                    <?= ($cta_title) ? '<h3 class="cta__wrapper-title">' . $cta_title . '</h3>' : ''; ?>
+                    <?= ($cta_text) ? '<p class="cta__wrapper-text">' . $cta_text . '</p>' : ''; ?>
+                    <?= ($cta_button) ? '<a href="' . $cta_button['url'] . '" class="button button-primary">' . $cta_button['title'] . '</a>' : ''; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+<?php endif; ?>
 <footer id="colophon" class="footer pre-footer-corporate bg-gray-dark">
     <div class="container">
         <div class="row justify-content-md-center row-30 row-md-50">
@@ -58,7 +78,7 @@ $contacts_linkedin = get_field('contacts_linkedin', 'option');
                             <?php if ($contacts_linkedin): ?>
                                 <li>
                                     <i class="fa fa-linkedin-square" aria-hidden="true"></i>
-                                    <a href="<?= $contacts_linkedin;?>" target="_blank">LinkedIn</a>
+                                    <a href="<?= $contacts_linkedin; ?>" target="_blank">LinkedIn</a>
                                 </li>
                             <?php endif; ?>
                         </ul>

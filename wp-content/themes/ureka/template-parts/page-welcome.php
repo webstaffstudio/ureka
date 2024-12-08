@@ -1,10 +1,11 @@
 <?php
-$hero_image = get_field('page_welcome_image');
+$page_welcome = get_field('page_welcome');
+$hero_image = $page_welcome['page_welcome_image'] ?? '';
 if (!$hero_image) {
 $hero_image = get_field('page_welcome_image', 'options');
 }
 $hero_image_url = $hero_image ? wp_get_attachment_image_src($hero_image, 'large')[0] : '';
-$page_description = get_field('page_description');
+$page_description = $page_welcome['page_description'] ?? '';
 ?>
 <section class="page-welcome text-center">
     <div class="section parallax-container" <?= ($hero_image_url) ? 'data-parallax-img="' . $hero_image_url . '"' : ''; ?>>

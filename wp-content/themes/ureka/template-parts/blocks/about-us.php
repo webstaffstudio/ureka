@@ -33,7 +33,7 @@ if ($image_id || $title || $description || $text || $link): ?>
                 </div>
                 <?php if ($image_id): ?>
                     <div class="col-md-11 col-lg-10 col-xl-6">
-                        <?= get_image_html($image_id, 'thumbnail', 'about-us-image'); ?>
+                        <?= get_image_html($image_id, 'large', 'about-us-image', $title); ?>
                     </div>
                 <?php endif; ?>
             </div>

@@ -1,0 +1,18 @@
+.our-team {
+  &__wrapper {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+
+    &-item {
+      margin-bottom: 75px;
+      @include mq(0, 767) {
+        margin-bottom: 45px;
+      }
+      img {
+        max-width: 415px;
+        width: 100%;
+      }
+    }
+  }
+}

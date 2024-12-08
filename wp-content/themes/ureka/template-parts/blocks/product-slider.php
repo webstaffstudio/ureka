@@ -22,15 +22,15 @@ if ($products): ?>
             <?php endif; ?>
             <div class="swiper products-carousel" >
                 <div class="swiper-wrapper">
-                    <?php foreach ($products as $product):
-                        $image = get_the_post_thumbnail_url($product, 'large');
-                        $title = get_the_title($product);
-                        $permalink = get_permalink($product);
+                    <?php foreach ($products as $product_id):
+                        $image = get_post_thumbnail_id($product_id);
+                        $title = get_the_title($product_id);
+                        $permalink = get_permalink($product_id);
                         ?>
                         <div class="swiper-slide">
                             <div class="post-classic post-minimal">
                                 <a href="<?= esc_url($permalink); ?>">
-                                    <img  class="products-carousel__image"  src="<?= esc_url($image); ?>" alt="<?= esc_attr($title); ?>"/>
+                                    <?= get_image_html($image, 'large', 'products-carousel__image',$title);?>
                                     <h6><?= esc_html($title); ?></h6>
                                 </a>
 

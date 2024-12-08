@@ -1,0 +1,27 @@
+.cta {
+  background-color: #f8f8f8;
+  border-top: 2px solid rgba(249, 183, 7, 0.4);
+
+  &__wrapper {
+    padding-top: 45px;
+    padding-bottom: 45px;
+    max-width: 870px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    &-title {
+    }
+
+    &-text {
+    }
+
+    .button {
+      margin-top: 40px;
+      @include mq(0, 767){
+        margin-top: 25px;
+      }
+    }
+  }
+}

@@ -110,3 +110,33 @@ add_filter('bcn_breadcrumb_title', function($title, $breadcrumb) {
     }
     return $title;
 }, 10, 2);
+
+
+function ureka_login_logo() {
+    echo '<style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(' . get_stylesheet_directory_uri() . '/assets/src/img/ureka-logo.png);
+            pointer-events: none;
+            height: 100px; 
+            width: 100%; 
+            background-size: contain;
+        }
+        #loginform {
+         #wp-submit {
+             border-color: #f9b707;
+             background-color: #f9b707;
+             color: #fff;
+             transition: 0.3s ease-in-out;
+            
+             &:hover {
+             background-color: #000;
+             border-color: #000;
+             color: #fff;
+             }
+         }
+        
+        }
+    </style>';
+}
+
+add_action('login_enqueue_scripts', 'ureka_login_logo');
