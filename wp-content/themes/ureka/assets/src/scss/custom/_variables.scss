@@ -21,7 +21,7 @@
 // Grid containers
 // Grid columns
 // Buttons
-// Pagination 
+// Pagination
 // Tooltips
 
 
@@ -71,7 +71,7 @@ $facebook-darken:         darken($facebook, 5%);
 $twitter:                 #02bcf3;
 $twitter-light:           #81cbdb;
 $twitter-darken:          darken($twitter, 5%);
- 
+
 $google:                  #e2411e;
 $google-light:            #de7272;
 $google-darken:           darken($google, 5%);
@@ -177,7 +177,7 @@ $h4-font-size: $_h4-fsz * 1px;
 $h5-font-size: $_h5-fsz * 1px;
 $h6-font-size: $_h6-fsz * 1px;
 
-$h1-line-height: ($_h1-lh / $_h1-fsz); 
+$h1-line-height: ($_h1-lh / $_h1-fsz);
 $h2-line-height: ($_h2-lh / $_h2-fsz);
 $h3-line-height: ($_h3-lh / $_h3-fsz);
 $h4-line-height: ($_h4-lh / $_h4-fsz);
@@ -257,7 +257,7 @@ $grid-breakpoints: (
   xl:   1200px,
   xxl:  1400px
 );
- 
+
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
 
@@ -276,7 +276,7 @@ $container-max-widths: (
     md:   720px,
     lg:   960px,
     xl:   1200px,
-    xxl:  1400px
+    xxl:  1140px
 );
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -314,7 +314,7 @@ $input-btn-line-height-lg:  1.5;
 
 
 $btn-font-family:                $font-family-sec;
-$btn-font-weight:                400; 
+$btn-font-weight:                400;
 $btn-letter-spacing:             .06em;
 $btn-text-transform:             uppercase;
 
@@ -329,7 +329,7 @@ $btn-block-spacing-y:            .5rem;
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:              $border-radius;
 $btn-border-radius-lg:           $border-radius-lg;
-$btn-border-radius-sm:           $border-radius-sm; 
+$btn-border-radius-sm:           $border-radius-sm;
 
 $btn-transition:                 all .15s ease-in-out;
 

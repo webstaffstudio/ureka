@@ -20,7 +20,7 @@ $page_description = $page_welcome['page_description'] ?? '';
                 <div class="parallax-header__content">
                     <div class="container">
                         <div class="row justify-content-sm-center">
-                            <div class="col-md-10 col-xl-8">
+                            <div class="col-md-10">
                                 <h1 class="heading-decorated"><?php the_title(); ?></h1>
                                 <?= ($page_description) ? '<p class="heading-6">' . $page_description . '</p>' : ''; ?>
                                 <?php if (function_exists('bcn_display')): ?>

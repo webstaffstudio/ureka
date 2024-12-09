@@ -39,7 +39,7 @@ html body {
   .button-black {
     @include btn-variant($white, $black, $black, $white, $primary, $primary);
   }
-  
+
   .button-gray-dark {
     @include btn-variant($white, $gray-dark, $gray-dark, $white, $primary, $primary);
   }
@@ -136,11 +136,11 @@ html body {
     &-left {
       .icon {
         padding-right: 11px;
-      } 
+      }
     }
 
     &-right {
-      .icon { 
+      .icon {
         float: right;
         padding-left: 11px;
       }
