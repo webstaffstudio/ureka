@@ -16,26 +16,31 @@ if ($icon_boxes): ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <?=($icon_box_title) ? '<h4 class="heading-decorated">'.$icon_box_title.'</h4>' : '';?>
+                    <?= ($icon_box_title) ? '<h4 class="heading-decorated">' . $icon_box_title . '</h4>' : ''; ?>
                 </div>
             </div>
             <div class="row row-50 justify-content-md-center justify-content-lg-start">
                 <?php foreach ($icon_boxes as $box):
-                    $icon = $box['icon'];
+                    $linear_icon = $box['icon'];
                     $title = $box['title'];
                     $text = $box['text'];
+                    if (strpos($linear_icon, 'lnr-') === 0) {
+                        $linear_icon = substr($linear_icon, 4);
+                    }
                     ?>
                     <div class="col-md-6 col-xl-4">
                         <article class="blurb blurb-circle">
                             <div class="unit flex-column flex-sm-row unit-spacing-md">
-                                <div class="unit-left">
-                                    <div class="blurb-circle__icon">
-                                        <?= get_image_html($icon, 'medium', '', $title); ?>
+                                <?php if ($linear_icon): ?>
+                                    <div class="unit-left">
+                                        <div class="blurb-circle__icon">
+                                            <span class="icon linear-icon-<?= $linear_icon; ?>"></span>
+                                        </div>
                                     </div>
-                                </div>
+                                <?php endif; ?>
                                 <div class="unit-body">
-                                    <?=($title) ? '<p class="heading-6 blurb__title">'.$title.'</p>' : '';?>
-                                    <?=($text) ? '<p>'.$text.'</p>' : '';?>
+                                    <?= ($title) ? '<p class="heading-6 blurb__title">' . $title . '</p>' : ''; ?>
+                                    <?= ($text) ? '<p>' . $text . '</p>' : ''; ?>
                                 </div>
                             </div>
                         </article>
