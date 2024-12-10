@@ -1,0 +1,19 @@
+.testimonials {
+  &__slider {
+    overflow: hidden;
+    margin-top: 60px;
+
+    .quote-default {
+      &__image {
+        img {
+          overflow: hidden;
+          border-radius: 50%;
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+}
