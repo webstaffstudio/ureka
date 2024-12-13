@@ -41,7 +41,7 @@ if ($accordion): ?>
                              data-bs-parent="#accordion" role="tabpanel"
                              aria-labelledby="accordionHeading<?= $index; ?>">
                             <div class="card-custom-body">
-                                <?= ($text) ? '<p>' . $text . '</p>' : ''; ?>
+                                <?= ($text) ??  ''; ?>
                             </div>
                         </div>
                     </div>

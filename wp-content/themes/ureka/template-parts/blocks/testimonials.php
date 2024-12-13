@@ -18,7 +18,7 @@ if ($testimonials): ?>
                     <?= $title ? '<h4 class="heading-decorated text-center testimonials__title">' . esc_html($title) . '</h4>' : ''; ?>
                 </div>
             </div>
-            <div class=" swiper testimonials__slider">
+            <div class="swiper testimonials__slider">
                 <div class="swiper-wrapper">
                     <?php foreach ($testimonials as $testimonial):
                         $photo = $testimonial['photo'];
@@ -28,22 +28,29 @@ if ($testimonials): ?>
                         $text = $testimonial['text'];
                         ?>
                         <div class="swiper-slide">
-                            <div class="quote-default quote-default_left">
-                                <div class="quote-default__image">
-                                    <img src="<?= $photo; ?>" alt="<?= $name; ?>">
+                            <div class="testimonials__item">
+                                <div class="testimonials__item-photo">
+                                    <img src="<?= esc_url($photo); ?>" alt="<?= esc_attr($name); ?>">
                                 </div>
-                                <div class="quote-default__text">
-                                    <?= $text ? '<p class="q">' . esc_html($text) . '</p>' : ''; ?>
+                                <div class="cite-meta">
+                                    <?= $name ? '<p class="cite-meta__name">' . esc_html($name) . '</p>' : ''; ?>
+                                    <?= $position ? '<p class="cite-meta__position">' . esc_html($position) . '</p>' : ''; ?>
+                                    <?= $company_name ? '<p class="cite-meta__company">' . esc_html($company_name) . '</p>' : ''; ?>
                                 </div>
-                                <?= $name ? '<p class="quote-default__cite-name">' . esc_html($name) . '</p>' : ''; ?>
-                                <?= $position ? '<p class="quote-default__cite-position">' . esc_html($position) . '</p>' : ''; ?>
-                                <?= $company_name ? '<p class="quote-default__cite-company">' . esc_html($company_name) . '</p>' : ''; ?>
+                                <div class="testimonials__item-text">
+                                    <?= $text ? '<div>' . $text . '</div>' : ''; ?>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
+            <div class="slider-ureka-nav-left slider-ureka-nav linear-icon-chevron-left"></div>
+            <div class="slider-ureka-nav-right slider-ureka-nav linear-icon-chevron-right"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </section>
 <?php endif; ?>
+
+
 

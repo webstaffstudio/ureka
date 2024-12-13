@@ -1,23 +1,38 @@
 import Swiper from 'swiper';
-import {Autoplay, Navigation, EffectFade} from 'swiper/modules';
+import {Navigation, Pagination} from 'swiper/modules';
 
-Swiper.use([Autoplay, Navigation, EffectFade]);
+Swiper.use([Navigation, Pagination,]);
+
 const testimonialsSlider = () => {
-
     const slider = document.querySelector('.testimonials__slider');
 
     new Swiper(slider, {
-        slidesPerView: 2,
-        loop: true,
+        slidesPerView: 1,
+        loop: false,
         resizeObserver: true,
         keyboard: true,
-        observer: true,
-        enabled: true,
-        spaceBetween: 20,
+        spaceBetween: 30,
         navigation: {
-            nextEl: document.querySelector('.products-carousel-nav-right'),
-            prevEl: document.querySelector('.products-carousel-nav-left'),
+            nextEl: '.slider-ureka-nav-right',
+            prevEl: '.slider-ureka-nav-left',
         },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            600: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            1200: {
+                slidesPerView: 3,
+            },
+        },
+
     });
-}
+};
+
 export default testimonialsSlider();

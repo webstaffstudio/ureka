@@ -20,7 +20,7 @@ if ($products): ?>
                     </div>
                 </div>
             <?php endif; ?>
-            <div class="swiper products-carousel" >
+            <div class="swiper products-carousel">
                 <div class="swiper-wrapper">
                     <?php foreach ($products as $product_id):
                         $image = get_post_thumbnail_id($product_id);
@@ -30,7 +30,7 @@ if ($products): ?>
                         <div class="swiper-slide">
                             <div class="post-classic post-minimal">
                                 <a href="<?= esc_url($permalink); ?>">
-                                    <?= get_image_html($image, 'large', 'products-carousel__image',$title);?>
+                                    <?= get_image_html($image, 'large', 'products-carousel__image', $title); ?>
                                     <h6><?= esc_html($title); ?></h6>
                                 </a>
 
@@ -40,8 +40,8 @@ if ($products): ?>
                 </div>
 
             </div>
-            <div class="products-carousel-nav-left products-slider-nav linear-icon-chevron-left"></div>
-            <div class="products-carousel-nav-right products-slider-nav linear-icon-chevron-right"></div>
+            <div class="slider-ureka-nav-left slider-ureka-nav linear-icon-chevron-left"></div>
+            <div class="slider-ureka-nav-right slider-ureka-nav linear-icon-chevron-right"></div>
         </div>
     </section>
 <?php endif; ?>

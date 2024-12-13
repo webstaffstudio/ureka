@@ -1032,9 +1032,7 @@ Swiper.use([Autoplay, Navigation, EffectFade]);
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev'
                         },
-                        autoplay: {
-                            delay: 5000
-                        }
+                        autoplay: false
                     },
                     xMode = {
                         autoplay: false,

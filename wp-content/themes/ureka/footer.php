@@ -4,6 +4,7 @@ $fields = get_fields('options');
 
 $form_title = $fields['footer_form_title'] ?? '';
 $form_id = $fields['footer_form_id'] ?? '';
+$portal_id = $fields['footer_portal_id'] ?? '';
 $footer_contacts_title = $fields['footer_contacts_title'] ?? '';
 $contacts_address = $fields['contacts_address'] ?? '';
 $contacts_phone = $fields['contacts_phone'] ?? '';
@@ -12,18 +13,27 @@ $contacts_linkedin = $fields['contacts_linkedin'] ?? '';
 $cta_title = $fields['cta_title'] ?? '';
 $cta_text = $fields['cta_text'] ?? '';
 $cta_button = $fields['cta_button'] ?? '';
+$cta_email_subject = $fields['cta_email_subject'] ?? '';
 $page_disable_cta = get_field('call_to_action_disable', get_queried_object_id());
+
+
+if ($cta_button && strpos($cta_button['url'], 'mailto:') === 0) {
+    $cta_button_url = $cta_button['url'] . '?subject=' . rawurlencode($cta_email_subject);
+} else {
+    $cta_button_url = $cta_button['url'] ?? '';
+}
 ?>
 <?php
 if (!$page_disable_cta):
     if ($cta_title || $cta_text || $cta_button):
+
         ?>
         <section class="cta">
             <div class="container">
                 <div class="cta__wrapper">
                     <?= ($cta_title) ? '<h3 class="cta__wrapper-title">' . $cta_title . '</h3>' : ''; ?>
                     <?= ($cta_text) ? '<p class="cta__wrapper-text">' . $cta_text . '</p>' : ''; ?>
-                    <?= ($cta_button) ? '<a href="' . $cta_button['url'] . '" class="button button-primary">' . $cta_button['title'] . '</a>' : ''; ?>
+                    <?= ($cta_button) ? '<a href="' . $cta_button_url . '" class="button button-primary">' . $cta_button['title'] . '</a>' : '';?>
                 </div>
             </div>
         </section>
@@ -41,7 +51,7 @@ if (!$page_disable_cta):
                                     src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
                             <script>
                                 hbspt.forms.create({
-                                    portalId: "143438972",
+                                    portalId: "<?= $portal_id;?>",
                                     formId: "<?= $form_id; ?>",
                                     cssClass: "hubspot-form",
                                 });

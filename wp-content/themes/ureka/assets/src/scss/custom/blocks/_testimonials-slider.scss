@@ -1,19 +1,111 @@
 .testimonials {
-  &__slider {
-    overflow: hidden;
-    margin-top: 60px;
+  margin: 115px 0 70px 0;
+  @include mq(0, 767) {
+    margin: 50px 0;
+  }
 
-    .quote-default {
-      &__image {
-        img {
-          overflow: hidden;
-          border-radius: 50%;
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-        }
+  .container {
+    max-width: 1500px;
+    padding-right: 80px;
+    padding-left: 80px;
+    position: relative;
+    padding-bottom: 50px;
+    @include mq(0, 767) {
+      padding: 30px;
+    }
+  }
+
+  &__slider {
+    margin-top: 60px;
+    overflow: hidden;
+  }
+
+  .swiper-wrapper {
+    .swiper-slide {
+      width: auto;
+      white-space: initial;
+    }
+  }
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mq(0, 767) {
+      bottom: -10px !important;
+    }
+
+    &-bullet {
+      width: 9px;
+      height: 9px;
+      background-color: $color-2;
+
+      &-active {
+        background-color: $primary;
+        width: 14px;
+        height: 14px;
       }
     }
   }
 
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: auto;
+
+    &-photo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+
+      img {
+        overflow: hidden;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+    }
+
+    .cite-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 15px;
+
+      p {
+        margin-top: 5px;
+      }
+
+      &__name {
+        font-size: 26px;
+        color: #595959;
+        font-weight: 600;
+      }
+
+      &__position {
+        font-size: 14px;
+      }
+
+      &__company {
+        font-size: 18px;
+      }
+    }
+
+    &-text {
+      background-color: #f3f2f2;
+      word-break: break-all;
+      padding: 10px 20px;
+      border-radius: 12px;
+      color: #000;
+      position: relative;
+
+    }
+
+    .cite-meta {
+      margin-top: 2px;
+    }
+  }
 }

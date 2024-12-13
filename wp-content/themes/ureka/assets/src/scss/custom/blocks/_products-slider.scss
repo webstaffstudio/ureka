@@ -1,11 +1,22 @@
 .products-slider {
   .container {
     position: relative;
+    max-width: 1500px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-bottom: 50px;
+    @include mq(0, 767) {
+      padding: 30px 50px;
+    }
   }
 
   .products-carousel {
     overflow: hidden;
     margin-top: 60px;
+
+    .swiper-wrapper {
+      position: relative;
+    }
 
     .swiper-slide {
       margin-bottom: auto;
@@ -13,6 +24,9 @@
 
     .post-minimal {
       width: 100%;
+      @include mq(0, 767) {
+        text-align: center;
+      }
     }
 
     a {
@@ -38,31 +52,34 @@
       overflow: hidden;
     }
   }
-
-  .products-slider-nav {
-    position: absolute;
-    font-size: 42px;
-    cursor: pointer;
-
-    &::before {
-      transition: 0.3s ease-in-out;
-    }
-
-    &:hover {
-      &::before {
-        color: $primary;
-      }
-    }
-
-    &.products-carousel-nav-right {
-      right: -50px;
-      top: 50%;
-    }
-
-    &.products-carousel-nav-left {
-      left: -50px;
-      top: 50%;
-    }
-  }
 }
 
+
+.slider-ureka-nav {
+  position: absolute;
+  font-size: 42px;
+  cursor: pointer;
+  @include mq(0, 767) {
+    font-size: 32px;
+  }
+
+  &::before {
+    transition: 0.3s ease-in-out;
+  }
+
+  &:hover {
+    &::before {
+      color: $primary;
+    }
+  }
+
+  &.slider-ureka-nav-right {
+    right: 10px;
+    top: 50%;
+  }
+
+  &.slider-ureka-nav-left {
+    left: 10px;
+    top: 50%;
+  }
+}

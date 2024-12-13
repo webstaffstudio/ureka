@@ -390,6 +390,11 @@ code,
     span.sep {
       margin: 0 5px 0 2px;
     }
+    span {
+      .current-item {
+        color: #a8a8a8;
+      }
+    }
   }
 }
 
