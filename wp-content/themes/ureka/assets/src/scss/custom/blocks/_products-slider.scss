@@ -55,31 +55,3 @@
 }
 
 
-.slider-ureka-nav {
-  position: absolute;
-  font-size: 42px;
-  cursor: pointer;
-  @include mq(0, 767) {
-    font-size: 32px;
-  }
-
-  &::before {
-    transition: 0.3s ease-in-out;
-  }
-
-  &:hover {
-    &::before {
-      color: $primary;
-    }
-  }
-
-  &.slider-ureka-nav-right {
-    right: 10px;
-    top: 50%;
-  }
-
-  &.slider-ureka-nav-left {
-    left: 10px;
-    top: 50%;
-  }
-}
