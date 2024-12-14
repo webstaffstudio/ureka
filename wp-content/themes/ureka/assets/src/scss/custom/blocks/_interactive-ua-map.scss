@@ -1,12 +1,51 @@
 .ua-map {
   padding: 115px 0;
 
+  &__contacts {
+    .accordion-block {
+      .card-custom-title {
+        font-size: 21px;
+        > a {
+          padding: 17px 0;
+        }
+      }
+      .contact-item {
+        display: flex;
+        gap: 12px;
+        font-size: 20px;
+
+        a {
+          color: initial;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+
+        p {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
   &__map {
-    path {
-      cursor: pointer;
-      transition: 0.2s linear;
-      &.highlight-hover, &.highlight-by-tab {
-        fill: $primary
+    svg {
+      width: 800px;
+      @include mq(0, 1430){
+        width: 700px;
+      }
+      @include mq(0, 1240){
+        width: 600px;
+      }
+      path.contact-exist {
+        fill: #42814c;
+        cursor: pointer;
+        transition: 0.2s linear;
+
+        &.highlight-hover, &.highlight-by-tab {
+          fill: $primary
+        }
       }
     }
   }

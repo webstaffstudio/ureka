@@ -1,4 +1,41 @@
 const interactiveUaMap = () => {
+
+
+    const openAccordionItem = (contactId) => {
+        // Знайти посилання з відповідним data-contact-id
+        const accordionLink = document.querySelector(`a[data-contact-id="${contactId}"]`);
+        if (accordionLink) {
+            // Отримати href для елемента, що потрібно відкрити
+            const collapseId = accordionLink.getAttribute('href');
+            if (collapseId) {
+                // Знайти елемент акордеону за href
+                const accordionCollapse = document.querySelector(collapseId);
+                if (accordionCollapse) {
+                    // Використати Bootstrap Collapse для відкриття
+                    const bootstrapCollapse = bootstrap.Collapse.getInstance(accordionCollapse);
+                    if (!bootstrapCollapse) {
+                        new bootstrap.Collapse(accordionCollapse, { toggle: true });
+                    } else {
+                        bootstrapCollapse.show();
+                    }
+                }
+            }
+        } else {
+            console.error(`Accordion item with data-contact-id="${contactId}" not found.`);
+        }
+    };
+
+// Виклик функції для відкриття айтема
+    openAccordionItem('UA30');
+
+
+
+
+
+
+
+
+
     const accordionItems = document.querySelectorAll('#accordion .card-custom a');
     const svgRegions = document.querySelectorAll('svg [id^="UA"]');
     const popup = document.createElement('div');
@@ -33,23 +70,41 @@ const interactiveUaMap = () => {
         });
     };
 
+    const markExistingContacts = () => {
+        const regionIds = Array.from(accordionItems).map(item => item.getAttribute('data-contact-id'));
+        svgRegions.forEach(region => {
+            if (regionIds.includes(region.getAttribute('id'))) {
+                region.classList.add('contact-exist');
+            } else {
+                region.classList.remove('contact-exist');
+            }
+        });
+    };
+
     accordionItems.forEach(item => {
         item.addEventListener('click', updateHighlightedRegions);
     });
 
     svgRegions.forEach(region => {
         region.addEventListener('mouseenter', function (e) {
-            region.classList.add('highlight-hover');
-            const regionName = region.getAttribute('data-name') || 'Область';
-            popup.style.display = 'block';
-            popup.textContent = regionName;
-            popup.style.top = e.pageY + 10 + 'px';
-            popup.style.left = e.pageX + 10 + 'px';
+            const regionId = region.getAttribute('id');
+            const hasContact = Array.from(accordionItems).some(item => item.getAttribute('data-contact-id') === regionId);
+
+            if (hasContact) {
+                region.classList.add('highlight-hover');
+                const regionName = region.getAttribute('data-name') || 'Область';
+                popup.style.display = 'block';
+                popup.textContent = regionName;
+                popup.style.top = e.pageY + 10 + 'px';
+                popup.style.left = e.pageX + 10 + 'px';
+            }
         });
 
         region.addEventListener('mousemove', function (e) {
-            popup.style.top = e.pageY + 10 + 'px';
-            popup.style.left = e.pageX + 10 + 'px';
+            if (popup.style.display === 'block') {
+                popup.style.top = e.pageY + 10 + 'px';
+                popup.style.left = e.pageX + 10 + 'px';
+            }
         });
 
         region.addEventListener('mouseleave', function () {
@@ -59,29 +114,57 @@ const interactiveUaMap = () => {
 
         region.addEventListener('click', function () {
             const regionId = region.getAttribute('id');
-            accordionItems.forEach(item => {
-                if (item.getAttribute('data-contact-id') === regionId) {
-                    const collapse = document.querySelector(item.getAttribute('href'));
-                    accordionItems.forEach(otherItem => {
-                        const otherCollapse = document.querySelector(otherItem.getAttribute('href'));
-                        if (otherCollapse && otherCollapse !== collapse) {
-                            otherCollapse.classList.remove('show');
-                            otherItem.setAttribute('aria-expanded', 'false');
-                        }
-                    });
-                        console.log(collapse);
+            const isHighlighted = region.classList.contains('highlight-by-tab');
+            const correspondingItem = Array.from(accordionItems).find(item => item.getAttribute('data-contact-id') === regionId);
+
+            if (isHighlighted) {
+                // Знімаємо клас highlight-by-tab
+                region.classList.remove('highlight-by-tab');
+
+                // Закриваємо відповідний акордеон айтем
+                if (correspondingItem) {
+                    const collapse = document.querySelector(correspondingItem.getAttribute('data-contact-id'));
                     if (collapse) {
-                        console.log('has collapse');
-                        collapse.classList.add('show');
-                        item.setAttribute('aria-expanded', 'true');
+                        const bootstrapCollapse = bootstrap.Collapse.getInstance(collapse);
+                        if (bootstrapCollapse) {
+                            bootstrapCollapse.hide();
+                        }
                     }
                 }
-            });
+            } else {
+                // Додаємо клас highlight-by-tab і відкриваємо айтем
+                accordionItems.forEach(item => {
+                    const collapse = document.querySelector(item.getAttribute('data-contact-id'));
+                    if (collapse) {
+                        const bootstrapCollapse = bootstrap.Collapse.getInstance(collapse);
+                        if (bootstrapCollapse) {
+                            bootstrapCollapse.hide();
+                        }
+                    }
+                });
+
+                if (correspondingItem) {
+                    const collapse = document.querySelector(correspondingItem.getAttribute('href'));
+                    if (collapse) {
+                        let bootstrapCollapse = bootstrap.Collapse.getInstance(collapse);
+                        if (!bootstrapCollapse) {
+                            bootstrapCollapse = new bootstrap.Collapse(collapse, {
+                                toggle: true
+                            });
+                        } else {
+                            bootstrapCollapse.show();
+                        }
+                    }
+                    region.classList.add('highlight-by-tab');
+                }
+            }
+
             updateHighlightedRegions();
         });
     });
 
     updateHighlightedRegions();
+    markExistingContacts();
 };
 
 export default interactiveUaMap();
