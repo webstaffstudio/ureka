@@ -1,0 +1,13 @@
+.ua-map {
+  padding: 115px 0;
+
+  &__map {
+    path {
+      cursor: pointer;
+      transition: 0.2s linear;
+      &.highlight-hover, &.highlight-by-tab {
+        fill: $primary
+      }
+    }
+  }
+}

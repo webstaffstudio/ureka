@@ -31,4 +31,15 @@ function debug($data, $write_in_log = false)
     }
 }
 
+// Display svg element
+function get_svg_image($image_name)
+{
+    $theme_path = get_template_directory();
+    $full_path = $theme_path . '/' . '/assets/src/img/' . $image_name;
 
+    if (file_exists($full_path)) {
+        return file_get_contents($full_path);
+    } else {
+        return '';
+    }
+}
