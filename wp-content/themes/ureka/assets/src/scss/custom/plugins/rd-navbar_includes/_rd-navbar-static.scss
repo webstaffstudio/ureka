@@ -16,7 +16,9 @@
     min-height: 96px;
     transition: .33s all ease;
 
-    > * + * { margin-top: 30px; }
+    > * + * {
+      margin-top: 30px;
+    }
 
     .rd-navbar-toggle {
       display: none;
@@ -58,8 +60,13 @@
     flex-grow: 1;
 
     > * {
-      &:first-child { padding-right: 0; }
-      &:last-child { padding-left: 0; }
+      &:first-child {
+        padding-right: 0;
+      }
+
+      &:last-child {
+        padding-left: 0;
+      }
     }
   }
 
@@ -129,8 +136,9 @@
   }
 
   &.rd-navbar_transparent {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 1%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 1%, rgba(0, 0, 0, 0) 100%);
     box-shadow: none;
+    width: 100%;
 
     .rd-navbar-top-panel {
       border-bottom: 0;
@@ -165,11 +173,20 @@
       flex-direction: row;
       min-height: 126px;
 
-      > * + * { margin-top: 0; }
+      > * + * {
+        margin-top: 0;
+      }
+
       > * {
         padding: 0 25px;
-        &:first-child { padding-left: 0; }
-        &:last-child { padding-right: 0; }
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
       }
     }
 
@@ -221,7 +238,12 @@
     .rd-navbar-panel + .rd-navbar-nav-wrap {
       width: auto;
       text-align: center;
-      &:after { content: ''; }
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      &:after {
+        content: '';
+      }
     }
   }
 
@@ -265,7 +287,9 @@
       margin-top: 24px;
     }
 
-    .rd-navbar-top-panel { display: none; }
+    .rd-navbar-top-panel {
+      display: none;
+    }
 
     .rd-navbar-nav-wrap__element {
       .button {
@@ -287,10 +311,14 @@
       z-index: 1000;
 
       .rd-navbar-inner {
-        > * + * { margin-top: 0; }
+        > * + * {
+          margin-top: 0;
+        }
       }
 
-      .rd-navbar-panel { display: none; }
+      .rd-navbar-panel {
+        display: none;
+      }
     }
 
     @include media-breakpoint-up(xl) {
@@ -302,7 +330,9 @@
   }
 }
 
-.rd-navbar-static .rd-navbar-static--hidden { display: none; }
+.rd-navbar-static .rd-navbar-static--hidden {
+  display: none;
+}
 
 .rd-navbar-static-linked .rd-navbar-absolute {
   .rd-navbar-wrap {
@@ -311,5 +341,7 @@
     left: 0;
     right: 0;
     z-index: 100;
+    display: flex;
+    justify-content: center;
   }
 }

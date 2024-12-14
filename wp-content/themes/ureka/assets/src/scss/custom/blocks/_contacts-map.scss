@@ -1,0 +1,41 @@
+.contacts-block {
+  padding: 115px 0;
+
+  &__title {
+    @extend h5;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  &__contacts {
+    font-size: 20px;
+  }
+
+  &__social-media {
+    margin-top: 10px;
+
+    &-title {
+      @extend h5;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      display: flex;
+      gap: 3px;
+      flex-direction: column;
+
+      li {
+        a {
+          display: flex;
+          gap: 5px;
+          color: #000;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+    }
+  }
+}

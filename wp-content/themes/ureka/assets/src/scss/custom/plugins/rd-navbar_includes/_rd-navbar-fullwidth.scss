@@ -115,7 +115,10 @@
     .rd-navbar-nav-wrap {
       width: auto;
       text-align: center;
-      &:after { content: ''; }
+
+      &:after {
+        content: '';
+      }
     }
   }
 

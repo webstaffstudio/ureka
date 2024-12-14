@@ -2,9 +2,21 @@
 import './scripts';
 import {productsSlider} from './modules/products-slider';
 import {testimonialsSlider} from './modules/testimonials-slider';
+import {customSelect, eventClickCustomSelect} from "./modules/custom-select";
 jQuery(document).ready(function (){
 });
 document.addEventListener('DOMContentLoaded', () => {
+
+
+    const langSwitcherSelects = document.querySelectorAll('.ureka-lang-switcher');
+    langSwitcherSelects.forEach((select) => {
+        customSelect(select, 'ureka-lang-switcher-container');
+    });
+    if (document.querySelector(".ureka-custom-select")) {
+        eventClickCustomSelect();
+    }
+
+
     if (document.querySelector('.products-slider')) {
         productsSlider;
     }
