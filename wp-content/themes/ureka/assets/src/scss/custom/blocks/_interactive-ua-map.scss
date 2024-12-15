@@ -1,18 +1,30 @@
 .ua-map {
   padding: 115px 0;
 
+  .row-columns {
+    @include mq(0, 991) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
   &__contacts {
     .accordion-block {
       .card-custom-title {
         font-size: 21px;
+
         > a {
           padding: 17px 0;
         }
       }
+
       .contact-item {
         display: flex;
-        gap: 12px;
         font-size: 20px;
+
+        i {
+          width: 30px;
+        }
 
         a {
           color: initial;
@@ -32,21 +44,43 @@
   &__map {
     svg {
       width: 800px;
-      @include mq(0, 1430){
+      @include mq(0, 1430) {
         width: 700px;
       }
-      @include mq(0, 1240){
+      @include mq(0, 1240) {
         width: 600px;
       }
+
       path.contact-exist {
         fill: #42814c;
         cursor: pointer;
         transition: 0.2s linear;
 
         &.highlight-hover, &.highlight-by-tab {
-          fill: $primary
+          fill: $primary !important;
+        }
+
+        &:hover {
+          fill: #e0b84cde;
         }
       }
     }
+  }
+}
+
+#region-popup {
+  max-width: 400px;
+
+  div {
+    i {
+      width: 15px;
+    }
+
+    display: flex;
+    gap: 10px;
+  }
+
+  strong {
+    font-weight: 600;
   }
 }

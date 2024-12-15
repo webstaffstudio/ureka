@@ -1,5 +1,7 @@
 <?php
-
+if (!defined(THEME_TD)) {
+    define(THEME_TD, 'Ureka');
+}
 function _add_javascript()
 {
     // force all scripts to load in footer
@@ -12,6 +14,12 @@ function _add_javascript()
     wp_enqueue_script('cdn-jquery', 'https://code.jquery.com/jquery-3.7.1.min.js', array(), null, true);
     wp_enqueue_script('core', get_template_directory_uri() . '/assets/src/js/core/core.min.js', null, null, true);
     wp_enqueue_script('theme', get_template_directory_uri() . '/assets/dist/js/main.js', null, null, true);
+
+    wp_localize_script('theme', 'themeVars', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('my_nonce_action'),
+    ));
+
 }
 
 add_action('wp_enqueue_scripts', '_add_javascript', 100);
