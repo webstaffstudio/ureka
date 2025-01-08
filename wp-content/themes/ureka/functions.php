@@ -1,7 +1,7 @@
 <?php
 //Define text domain name
 define('THEME_TD', 'ureka');
-define('THEME_VER', '1.00');
+define('THEME_VER', '3.0');
 define('THEME_ROOT', get_template_directory());
 define('THEME_ROOT_URI', get_template_directory_uri());
 
@@ -23,4 +23,6 @@ if (is_dir($directory)) {
         }
     }
 }
+
+
 

@@ -1,0 +1,24 @@
+.search-results {
+  &__form {
+    .search-form{
+      input{
+        max-width: 350px;
+        border-radius: 3px;
+        width: 100%;
+        height: 58px;
+        padding: 2px 5px;
+        box-shadow: none !important;
+        border: 1px solid #cdcdcd;
+      }
+    }
+  }
+  .products-list__product-excerpt mark {
+    background-color: yellow;
+    padding: 2px;
+  }
+  .search-snippet{
+    .highlight {
+      background-color: #ffd565;
+    }
+  }
+}

@@ -11,10 +11,9 @@
   .rd-navbar-inner {
     position: relative;
     flex-direction: column;
-    padding-top: 21px;
-    padding-bottom: 21px;
-    min-height: 96px;
-    transition: .33s all ease;
+    min-height: 70px !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
 
     > * + * {
       margin-top: 30px;
@@ -36,6 +35,10 @@
   .rd-navbar-top-panel {
     padding-left: 25px;
     padding-right: 25px;
+  }
+
+  .rd-navbar-nav-wrap {
+    top: 6px;
   }
 
   .rd-navbar-inner,
@@ -241,6 +244,8 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      position: relative;
+
       &:after {
         content: '';
       }
@@ -325,6 +330,26 @@
       .rd-navbar-nav > li > .rd-navbar-dropdown,
       .rd-navbar-nav > li .rd-navbar-megamenu {
         margin-top: 26px;
+      }
+    }
+  }
+
+  .search-btn {
+    .rd-navbar-search-btn {
+      cursor: pointer;
+      &::before {
+        content: '\e922';
+        font-family: 'Linearicons';
+        font-size: 19px;
+        color: #fff;
+        display: block;
+        margin-left: 30px;
+        transition: 0.3s ease-in-out;
+      }
+      &:hover {
+        &::before {
+          color: $primary;
+        }
       }
     }
   }

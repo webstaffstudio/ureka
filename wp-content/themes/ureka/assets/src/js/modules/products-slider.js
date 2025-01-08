@@ -23,8 +23,8 @@ const productsSlider = () => {
             },
         },
         navigation: {
-            nextEl: document.querySelector('.testimonials__slider .slider-ureka-nav-right'),
-            prevEl: document.querySelector('.testimonials__slider .slider-ureka-nav-left'),
+            nextEl: document.querySelector('.products-slider .slider-ureka-nav-right'),
+            prevEl: document.querySelector('.products-slider .slider-ureka-nav-left'),
         },
     });
 }

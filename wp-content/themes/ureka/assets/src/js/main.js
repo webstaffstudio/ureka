@@ -9,9 +9,10 @@ jQuery(document).ready(function (){
 document.addEventListener('DOMContentLoaded', () => {
 
 
+
     const langSwitcherSelects = document.querySelectorAll('.ureka-lang-switcher');
     langSwitcherSelects.forEach((select) => {
-        customSelect(select, 'ureka-lang-switcher-container');
+        customSelect(select, ['ureka-lang-switcher-container', 'rd-navbar-search_collapsable']);
     });
     if (document.querySelector(".ureka-custom-select")) {
         eventClickCustomSelect();
@@ -25,4 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.ua-map')) {
         interactiveUaMap;
     }
+
 });

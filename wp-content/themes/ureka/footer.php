@@ -10,6 +10,12 @@ $contacts_address = $fields['contacts_address'] ?? '';
 $contacts_phone = $fields['contacts_phone'] ?? '';
 $contacts_email = $fields['contacts_email'] ?? '';
 $contacts_linkedin = $fields['contacts_linkedin'] ?? '';
+
+// Quick Call Widget
+$qcw_phone = $fields['qcw_phone'] ?? '';
+$qcw_whatsapp = $fields['qcw_whatsapp'] ?? '';
+$qcw_viber = $fields['qcw_viber'] ?? '';
+
 $cta_title = $fields['cta_title'] ?? '';
 $cta_text = $fields['cta_text'] ?? '';
 $cta_button = $fields['cta_button'] ?? '';
@@ -33,7 +39,7 @@ if (!$page_disable_cta):
                 <div class="cta__wrapper">
                     <?= ($cta_title) ? '<h3 class="cta__wrapper-title">' . $cta_title . '</h3>' : ''; ?>
                     <?= ($cta_text) ? '<p class="cta__wrapper-text">' . $cta_text . '</p>' : ''; ?>
-                    <?= ($cta_button) ? '<a href="' . $cta_button_url . '" class="button button-primary">' . $cta_button['title'] . '</a>' : '';?>
+                    <?= ($cta_button) ? '<a href="' . $cta_button_url . '" class="button button-primary">' . $cta_button['title'] . '</a>' : ''; ?>
                 </div>
             </div>
         </section>
@@ -103,6 +109,12 @@ if (!$page_disable_cta):
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<?php if ($qcw_phone || $qcw_viber || $qcw_whatsapp): ?>
+    <div class="qcw-widgets">
+        <?= ($qcw_phone) ? '<a class="qcw-widgets__phone hvr-push" href="tel:' . $qcw_whatsapp . '">'.get_svg_image('phone').'</a>' : ''; ?>
+        <?= ($qcw_viber) ? '<a class="qcw-widgets__viber hvr-push" href="viber://chat?number=' . $qcw_viber . '">'.get_svg_image('viber').'</a>' : ''; ?>
+        <?= ($qcw_whatsapp) ? '<a class="qcw-widgets__whatsapp hvr-push" target="_blank" rel="nofollow" href="https://api.whatsapp.com/send?phone=' . $qcw_whatsapp . '">'.get_svg_image('whatsapp').'</a>' : ''; ?>
+    </div>
+<?php endif; ?>
 </body>
 </html>

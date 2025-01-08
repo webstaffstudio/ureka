@@ -1,17 +1,55 @@
 .our-team {
   &__wrapper {
-    max-width: 900px;
+    max-width: 100%;
     width: 100%;
     margin: 0 auto;
+
+    &.col_2 {
+      max-width: 870px;
+    }
 
     &-item {
       margin-bottom: 75px;
       @include mq(0, 767) {
         margin-bottom: 45px;
       }
+
       img {
         max-width: 415px;
         width: 100%;
+      }
+
+      .our-team__phone-email {
+        margin-top: 12px;
+
+        .our-team-email, .our-team-phone {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 5px;
+
+          a {
+            color: $gray;
+
+            &:hover {
+              color: $primary;
+            }
+          }
+        }
+      }
+
+      &.col_4_set, &.col_3_set, &.col_2_set {
+        img {
+          max-width: 366px;
+          height: 450px;
+          object-fit: cover;
+          @include mq(0, 1199) {
+            height: 380px;
+          }
+          @include mq(0, 767) {
+            height: auto;
+          }
+        }
       }
     }
   }

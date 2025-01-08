@@ -95,11 +95,11 @@ $navbar-fullwidth-nav-indent: 30px;
 }
 
 %rd-navbar-hidden {
-  display: none;
+  visibility: hidden;
 }
 
 %rd-navbar-visible {
-  display: block;
+  visibility: visible;
 }
 
 .rd-navbar--no-transition {
@@ -139,7 +139,11 @@ $navbar-fullwidth-nav-indent: 30px;
 .rd-navbar-search-form {
   transition: .3s all ease;
 }
-
+.rd-navbar {
+  &:hover {
+    background-color: #272727 !important;
+  }
+}
 .rd-navbar-brand {
   .brand-name {
     img {
@@ -834,6 +838,13 @@ $navbar-fullwidth-nav-indent: 30px;
 
     .form-input {
       padding-left: 4px;
+      border-bottom: 1px solid #ccc;
+      width: 100%;
+      font-size: 16px;
+        @include placeholder(){
+          color: #fff;
+        }
+
     }
 
     .form-label {

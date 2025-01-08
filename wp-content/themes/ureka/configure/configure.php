@@ -39,18 +39,17 @@ function custom_setup() {
 	remove_image_size( '1536x1536' );
 	remove_image_size( '2048x2048' );
 
+
+    add_image_size('optimized_2k', 2560, 1440, true);
 	// Custom image sizes
 	// add_image_size( '424x424', 424, 424, true );
 	// add_image_size( '1920', 1920, 9999 );
 }
 add_action('after_setup_theme', 'custom_setup');
-
 // remove default image sizes to avoid overcharging server - comment line if you need size
 function remove_default_image_sizes( $sizes) {
-	unset( $sizes['large']);
-	unset( $sizes['medium']);
-	unset( $sizes['medium_large']);
-	return $sizes;
+    unset( $sizes['medium_large']);
+    return $sizes;
 }
 add_filter('intermediate_image_sizes_advanced', 'remove_default_image_sizes');
 

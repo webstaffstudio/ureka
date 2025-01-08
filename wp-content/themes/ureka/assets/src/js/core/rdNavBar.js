@@ -1,4 +1,3 @@
-
 (function () {
     var t;
     t = "ontouchstart" in window, function (n, o, e) {

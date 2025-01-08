@@ -1,5 +1,8 @@
 .ua-map {
   padding: 115px 0;
+  @include mq(0, 991) {
+    padding: 60px 0;
+  }
 
   .row-columns {
     @include mq(0, 991) {
@@ -10,8 +13,22 @@
 
   &__contacts {
     .accordion-block {
+      @include mq(0, 991) {
+        padding-top: 20px;
+        padding-bottom: 30px;
+      }
+
+      .card-custom-body {
+        @include mq(0,767) {
+          padding: 10px 25px 20px 0;
+        }
+      }
+
       .card-custom-title {
         font-size: 21px;
+        @include mq(0, 767) {
+          font-size: 16px;
+        }
 
         > a {
           padding: 17px 0;
@@ -21,6 +38,10 @@
       .contact-item {
         display: flex;
         font-size: 20px;
+        margin-bottom: 5px;
+        @include mq(0, 767) {
+          font-size: 16px;
+        }
 
         i {
           width: 30px;
@@ -43,13 +64,8 @@
 
   &__map {
     svg {
-      width: 800px;
-      @include mq(0, 1430) {
-        width: 700px;
-      }
-      @include mq(0, 1240) {
-        width: 600px;
-      }
+      width: 100%;
+      height: 100%;
 
       path.contact-exist {
         fill: #42814c;
@@ -70,6 +86,9 @@
 
 #region-popup {
   max-width: 400px;
+  @include mq(0, 991) {
+    display: none !important;
+  }
 
   div {
     i {

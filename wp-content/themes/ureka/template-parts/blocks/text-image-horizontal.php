@@ -13,6 +13,7 @@ if ($text_image_repeater):
         $i_bg_class = ($index % 2 === 1) ? '' : ' bg-gray-lighter';
         $i_direction_class = ($index % 2 === 1) ? ' flex-xl-row-reverse' : '';
         $image_id = ($row['text_image_horiz_image']) ?? '';
+        $section_bg_color = ($row['text_image_horiz_section_color']) ?? '';
         $title = ($row['text_image_horiz_title']) ?? '';
         $description = ($row['text_image_horiz_description']) ?? '';
         $text = ($row['text_image_horiz_text']) ?? '';
@@ -21,7 +22,7 @@ if ($text_image_repeater):
         $text_image_button_text = ($row['text_image_button_text']) ?? 'Завантажити';
         $pdf_file = ($row['pdf_file']) ?? '';
         if ($image_id || $title || $description || $text || $link): ?>
-            <section class="text-image-horiz section-md<?= $i_bg_class; ?>">
+            <section class="text-image-horiz section-md<?= $i_bg_class; ?>" <?= $section_bg_color ? 'style="background-color:' . esc_attr($section_bg_color) . ';"' : '' ?>>
                 <div class="container">
                     <div class="row justify-content-md-center row-30 row-md-50<?=$i_direction_class;?>">
                         <div class="col-md-11 col-lg-10 col-xl-6">

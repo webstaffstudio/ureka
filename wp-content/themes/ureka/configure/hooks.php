@@ -58,3 +58,13 @@ if (!function_exists('ureka_display_lang_switcher')) {
         }
     }
 }
+
+
+// Apply filter globally to limit search to specific post type
+function restrict_search_to_products($query) {
+    if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $query->set('post_type', 'ureka-products');
+    }
+}
+add_action('pre_get_posts', 'restrict_search_to_products');
+

@@ -17,7 +17,7 @@ if ($slides): ?>
              data-loop="true">
             <div class="swiper-wrapper">
                 <?php foreach ($slides as $index => $slide):
-                $image = $slide['image'] ?? '';
+                $image = !empty($slide['image']) ? wp_get_attachment_image_src($slide['image'], 'optimized_2k')[0] : '';
                 $title = $slide['title'] ?? '';
                 $text = $slide['text'] ?? '';
                 $link = $slide['link'] ?? '';

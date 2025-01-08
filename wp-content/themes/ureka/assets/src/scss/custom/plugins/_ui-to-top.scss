@@ -7,18 +7,25 @@
   position: fixed;
   right: 15px;
   bottom: 15px;
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   border-radius: 100%;
-  font-size: 24px;
-  line-height: 58px;
+  font-size: 21px;
+  line-height: 56px;
   overflow: hidden;
   text-align: center;
   text-decoration: none;
   z-index: 20;
   transition: .3s all ease;
- 
   transform: translateY(100px);
+
+  @include mq(0, 575) {
+    width: 48px;
+    height: 48px;
+    line-height: 52px;
+    bottom: 20px;
+    right: 18px;
+  }
 
   &::before {
     content: '\e941';
@@ -41,7 +48,7 @@
     outline: 0;
   }
 
-  &.active{
+  &.active {
     transform: translateY(0);
   }
 }

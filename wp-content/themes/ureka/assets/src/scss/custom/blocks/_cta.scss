@@ -2,6 +2,21 @@
   background-color: #f8f8f8;
   border-top: 2px solid rgba(249, 183, 7, 0.4);
 
+  &.flex-cta {
+    border: none;
+    margin: 50px 0;
+    border: none;
+    //for options of gutenberg block
+    &.border-top-enable {
+      border-top: 2px solid rgba(249, 183, 7, 0.4);
+    }
+
+    &.border-bottom-enable {
+      border-bottom: 2px solid rgba(249, 183, 7, 0.4);
+    }
+
+  }
+
   &__wrapper {
     padding-top: 45px;
     padding-bottom: 45px;
@@ -19,7 +34,7 @@
 
     .button {
       margin-top: 40px;
-      @include mq(0, 767){
+      @include mq(0, 767) {
         margin-top: 25px;
       }
     }

@@ -1,22 +1,22 @@
-const customSelect = (select, classSelect = 'default-custom-select', removeDefaultClass = false) => {
+const customSelect = (select, classSelect = ['default-custom-select'], removeDefaultClass = false) => {
     if (!select) return;
 
     const wrapperDiv = document.createElement('div'),
         customOptionsContainer = document.createElement('div'),
         options = select.querySelectorAll('option');
 
-    // Check if we should remove the default class
+    const classes = Array.isArray(classSelect) ? classSelect : [classSelect];
+
     if (removeDefaultClass) {
-        wrapperDiv.classList.add(classSelect);
+        wrapperDiv.classList.add(...classes);
     } else {
-        wrapperDiv.classList.add('ureka-custom-select-container', 'default-custom-select', classSelect);
+        wrapperDiv.classList.add('ureka-custom-select-container', 'default-custom-select', ...classes);
     }
 
     customOptionsContainer.classList.add('ureka-custom-select');
     select.insertAdjacentElement('beforebegin', wrapperDiv);
     wrapperDiv.appendChild(select);
 
-    // Hide original select
     select.classList.add('hidden-select');
 
     if (options) {
@@ -39,7 +39,6 @@ const customSelect = (select, classSelect = 'default-custom-select', removeDefau
             valueText.appendChild(customOptionImage);
         }
 
-        // Build options
         options.forEach((option) => {
             const customOption = document.createElement('div');
             customOption.classList.add('ureka-custom-select__option');
@@ -59,7 +58,6 @@ const customSelect = (select, classSelect = 'default-custom-select', removeDefau
             wrapperOptions.appendChild(customOption);
         });
 
-        // Append built divs
         wrapperValue.appendChild(valueText);
         wrapperOptionsValue.appendChild(wrapperValue);
         wrapperOptionsValue.appendChild(wrapperOptions);
@@ -67,6 +65,7 @@ const customSelect = (select, classSelect = 'default-custom-select', removeDefau
         select.parentNode.insertBefore(customOptionsContainer, select.nextSibling);
     }
 };
+
 
 
 const eventClickCustomSelect = () => {

@@ -12,14 +12,14 @@
 $icon_box_title = get_field('icon_box_title');
 $icon_boxes = get_field('icon_box');
 if ($icon_boxes): ?>
-    <section class="section-md bg-default text-center">
+    <section class="icon-box section-md bg-default text-center">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <?= ($icon_box_title) ? '<h4 class="heading-decorated">' . $icon_box_title . '</h4>' : ''; ?>
                 </div>
             </div>
-            <div class="row row-50 justify-content-md-center justify-content-lg-start">
+            <div class="row row-50 justify-content-md-start justify-content-lg-start">
                 <?php foreach ($icon_boxes as $box):
                     $linear_icon = $box['icon'];
                     $title = $box['title'];
